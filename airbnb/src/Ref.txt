@@ -1,0 +1,20 @@
+Vid >>
+-https://www.youtube.com/watch?v=bMknfKXIFA8
+
+Images >> 
+-https://logos-download.com/wp-content/uploads/2016/03/Airbnb_logo.png
+-https://pro.regiondo.com/wp-content/uploads/2019/06/airbnb-experiences-host.png
+-https://irp-cdn.multiscreensite.com/1139c650/dms3rep/multi/b14.jpeg
+
+
+Cmds >>
+npx create-react-app airbnb
+cd airbnb
+npm start
+
+https://www.youtube.com/watch?v=Xc6G3oV24yE >> Top 10 CSS One Liners That Will Blow Your Mind
+https://www.youtube.com/watch?v=Yo3j_Dx4u7c >> This Cool JavaScript Effect Will Make Your Website 3D !
+https://www.youtube.com/watch?v=dTFXufTgfOE >> Build a Fullstack E-commerce using Next.js (react.js, mongo, tailwind, styled components)
+https://www.youtube.com/watch?v=c2M-rlkkT5o >> MongoDB in 1 Hour 🍃 (2023)
+https://www.youtube.com/watch?v=c_-b_isI4vg >> Full Stack Airbnb Clone with Next.js 13 App Router: React, Tailwind, Prisma, MongoDB, NextAuth 2023
+https://www.youtube.com/watch?v=mqUN4N2q4qY >> Full Stack Netflix Clone in React, Tailwind CSS, Next.JS, Prisma, MongoDB, NextAuth & Vercel (2023)
