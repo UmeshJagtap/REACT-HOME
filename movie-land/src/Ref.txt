@@ -1,0 +1,16 @@
+<h1>Hello {isNameShowing ? name : 'someone'}!</h1> 
+<h1>Hello {2 + 2}!</h1>
+{name ? (
+    <>
+        <h1>{name}</h1>
+    </>
+    ) : (
+    <>
+        <h1>test</h1>
+        <h2>There is no name</h2>
+    </>
+)} 
+
+React JS Full Course 2023 | Build an App and Master React in 1 Hour : https://www.youtube.com/watch?v=b9eMGE7QtTk
+https://www.omdbapi.com/apikey.aspx
+https://gist.github.com/adrianhajdin/997a8cdf94234e889fa47be89a4759f1
