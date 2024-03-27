@@ -1,0 +1,1806 @@
+// Building a Website with Node.js and Express.js
+
+// Express is most commanly used framework with Node.
+
+// What you should know 
+// *Some HTML and CSS
+// *JavaScript basics, such as variables, functions, callbacks
+// *Node.js basics, such a s installation, using npm, require()
+// *ES6: let and const
+// *ES6: arrow functions- () => {}
+// *ES6: async/await
+
+// https://github.com/danielkhan/building-website-nodejs-express
+
+// [Clone or download]
+
+
+// $ mkdir building-website-nodejs-express
+// $ cd building-website-nodejs-express/
+// building-website-nodejs-express $ git clone --bare https://github.com/danielkhan/building-website-nodejs-express.git .git
+// $ git config --bool core.bare false
+// $ git reset --hard
+// $ git branch
+
+// VS Code >> https://code.visualstudio.com
+// Get started with Master Branch ( Bottom left )
+
+// Terminal
+// $ node -v >> v12.13.0
+// If not installed, head to https://nodejs.org/en/
+// $ npm install express
+//   Check package.json >> It will have express dependencies
+
+// New file >> server.js
+
+  // const express = require('express');
+
+  // const app = express();
+
+  // const port = 3000;
+
+  // app.get('/', (request, response) => {
+  //   response.send('Hello Express :)');
+  // });
+
+  // app.listen(port, () => {
+  //   console.log(`Express server listening on port ${port}!`);
+  // });
+
+// Terminal
+// $ node server.js >> Express server listening on port 3000!
+
+// BUILDING-WEBSITE-NODEJS-EXPRESS >> provided >> static --drag this folder to root.
+// BUILDING-WEBSITE-NODEJS-EXPRESS >> static >> (css, images, js, index.html)
+
+// index.html is using Bootstrap for responsiveness
+
+// // Serving HTML pages and static content -----------------------<<
+
+// >> server.js
+
+  // const express = require('express');
+  // const path = require('path');
+
+  // const app = express();
+
+  // const port = 3000;
+
+  // app.get('/', (request, response) => {
+  //   response.sendFile(path.join(__dirname, './static/index.html'));
+  // });
+
+  // app.get('/speakers', (request, response) => {
+  //   response.sendFile(path.join(__dirname, './static/speakers.html'));
+  // });
+
+  // app.listen(port, () => {
+  //   console.log(`Express server listening on port ${port}!`);
+  // });
+
+// Terminal
+// $ node server.js  >> localhost:3000 >> Page misses all images and styling
+// Chrome > More tools > Developer tools > Network....Fails to load images, styles which is static
+
+// >> server.js
+
+  // const express = require('express');
+  // const path = require('path');
+
+  // const app = express();
+
+  // const port = 3000;
+
+  // app.use(express.static(path.join(__dirname, './static')));
+
+  // app.get('/', (request, response) => {
+  //   response.sendFile(path.join(__dirname, './static/index.html'));
+  // });
+
+  // app.get('/speakers', (request, response) => {
+  //   response.sendFile(path.join(__dirname, './static/speakers.html'));
+  // });
+
+  // app.listen(port, () => {
+  //   console.log(`Express server listening on port ${port}!`);
+  // });
+
+// Terminal
+// $ node server.js >> Refresh  >> Should load everything back.
+
+// // Setting up ESLint and Prettier -----------------------<<
+
+// $ npm install -D eslint
+// package.json >> "devDependencies": { "eslint": "^6.6.0" } will be updated
+// $ npx eslint --init >> CommonJS (require/exports) >> None of these 
+//   >> Does your project use TypeScript? No >> Where does your code run? Node
+//   >> Use a popular style guide? Airbnb(https://github.com/airbnb/javascript)
+//   >> Config file format? JSON >> The config selected requires following dependencies
+//   >> install them now with npm? Yes
+
+// $ npm install -D prettier eslint-config-prettier eslint-plugin-prettier
+
+// VsCode >> Extension >> ESLint >> Install
+//           >> Prettier >> Install
+
+// Code > Preferences > Settings > eslint > Auto Fix on Save
+
+// // Setting up nodemon  -----------------------<<
+
+// $ npm install -D nodemon
+// {"scripts": { "start": "node server.js", "dev": "nodemon --ignore feedback.json server.js" }}
+// $ npm run dev
+
+// // Template engines and Express  -----------------------<<
+
+// app.js          --------------------------------|        Browser
+  //const persons = ["Melissa", "Mary", "James"];     |        <html>
+//                             |__ Template __   <ul><li>Melissa</li>
+// speakers-list.html                    |  Engine       <li>Mary</li></ul>
+  //<html><ul><li></li></ul></html> ----------------------|        </html>
+
+// https://expressjs.com/en/resources/template-engines.html
+
+
+// // Getting to know the EJS template engine  -----------------------<<
+
+// https://ejs.co
+
+// <% : 'Scriplt' tag for control flow, no output.
+// <%= Outputs the value into the template (HTML escaped)
+// %> Plain ending tag
+
+
+// dk$ npm install ejs
+
+// >> server.js
+
+  // const express = require('express');
+  // const path = require('path');
+
+  // const app = express();
+
+  // const port = 3000;
+
+  // app.set('view engine', 'ejs');
+  // app.set('views', path.join(__dirname, './views'));
+
+  // app.use(express.static(path.join(__dirname, './static')));
+
+  // app.get('/', (request, response) => {
+  //   response.sendFile(path.join(__dirname, './static/index.html'));
+  // });
+
+  // app.get('/speakers', (request, response) => {
+  //   response.sendFile(path.join(__dirname, './static/speakers.html'));
+  // });
+
+  // app.listen(port, () => {
+  //   console.log(`Express server listening on port ${port}!`);
+  // });
+
+// Create new Folder : BUILDING-WEBSITE-NODEJS-EXPRESSJS >> views
+
+// dk$ npm run dev
+
+// // Rendering the index page with EJS   -----------------------<<
+
+// >> server.js
+
+  // const express = require('express');
+  // const path = require('path');
+
+  // const app = express();
+
+  // const port = 3000;
+
+  // app.set('view engine', 'ejs');
+  // app.set('views', path.join(__dirname, './views'));
+
+  // app.use(express.static(path.join(__dirname, './static')));
+
+  // app.get('/', (request, response) => {
+  //   response.render('pages/index', { pageTitle: 'Welcome'});
+  // });
+
+  // app.get('/speakers', (request, response) => {
+  //   response.sendFile(path.join(__dirname, './static/speakers.html'));
+  // });
+
+  // app.listen(port, () => {
+  //   console.log(`Express server listening on port ${port}!`);
+  // });
+
+// Create new Folder : BUILDING-WEBSITE-NODEJS-EXPRESSJS >> views >> pages
+// Drag (static >> index.html)  to  (BUILDING-WEBSITE-NODEJS-EXPRESSJS >> views >> pages)
+// Now Rename pages >> index.html to index.ejs
+// Add VsCode Extension >> EJS language support >> install
+
+  // <!DOCTYPE html>
+  // <html>
+  //   <head>
+  //     <title>
+  //       Roux Meetups <%= pageTitle %>
+  //     </title>
+  //   </head>
+  // </html>
+
+// locathost: 3000 >> Updated title
+
+// // Express middleware and routes    -----------------------<<
+
+// Syntax
+
+  // app.use(callback);
+
+  // app.use(path, callback);
+
+  // app.[get | paost | put | delete | ...](pat, callback);
+
+// Express Middleware Can.... -->>
+  // Execute any code 
+  // Change the request and response objects
+  // End the request-response cycle -mostly to send data back to the caller
+  // Call the next middleware in the stack
+
+// Express Middleware (Handler Function)
+  // app.use((req, res, next) => {
+  //   // Do something
+  //   return next();
+  // });
+
+// Express Routing Middleware   
+  // http://localhost:3000/feedback  
+  // [Verb] > [Path] > [Handler Function]
+  // app.get('/feedback', (req, res, next) => {
+  //   // Do something
+  //   return res.send('Hello');
+  // });
+
+  // [Verb] > [Path] > [Handler Function]
+  // Verb: [.get, .post, .put, .delete]
+  // Path: ['/feedback]
+  // Handler Function: [.sendFile(,somefile');  .render(,mytemplate');]
+
+// Parameter Routes
+  // > app.get(,/speakers/:speakername', handler);
+  // http://localhost:3000/users/melissa
+  // http://localhost:3000/users/frank
+
+  // > app.get(,/speakers/:speakername?', handler);
+  // http://localhost:3000/users
+  // http://localhost:3000/users/melissa
+
+// The Express Request Lifecycle
+
+//         [APP Init]
+// |Request| -->  app.use()       app.get(,/,)
+//           | next()                 res.send()
+//         app.use()    |--> app.get(,/speakers') ------> |Response|
+//           | next()   | next()
+//         app.use() -------|   app.post(,/feedback')
+
+
+// Modular routes with express.Router   -----------------------<<
+
+// Create New Folder/File : BUILDING-WEBSITE-NODEJS-EXPRESSJS >> routes >> index.js
+
+// index.js
+
+  // const express = require('express');
+
+  // const router = express.Router();
+
+  // module.exports = () => {
+  //   router.get('/', (request, response) => {
+  //     response.render('pages/index', { pageTitle: 'Welcome'});
+  //   });
+  //   return router;
+  // }
+
+// >> server.js
+
+  // const express = require('express');
+  // const path = require('path');
+
+  // const routes = require('./routes');
+
+  // const app = express();
+
+  // const port = 3000;
+
+  // app.set('view engine', 'ejs');
+  // app.set('views', path.join(__dirname, './views'));
+
+  // app.use(express.static(path.join(__dirname, './static')));
+
+  // app.use('/', routes());
+
+  // app.listen(port, () => {
+  //   console.log(`Express server listening on port ${port}!`);
+  // });
+
+// localhost:3000 >> Everythig works fine >> We have dedicated Routing Infrastructure
+
+
+// // Creating routes for all subpages   -----------------------<<
+
+// Create New Folder/File : BUILDING-WEBSITE-NODEJS-EXPRESSJS >> routes >> feedback.js
+// Create New Folder/File : BUILDING-WEBSITE-NODEJS-EXPRESSJS >> routes >> speakers.js
+
+// >> server.js
+
+  // const express = require('express');
+  // const path = require('path');
+
+  // const routes = require('./routes');
+
+  // const app = express();
+
+  // const port = 3000;
+
+  // app.set('view engine', 'ejs');
+  // app.set('views', path.join(__dirname, './views'));
+
+  // app.use(express.static(path.join(__dirname, './static')));
+
+  // app.use('/', routes());
+
+  // app.listen(port, () => {
+  //   console.log(`Express server listening on port ${port}!`);
+  // });
+
+// >> index.js
+
+  // const express = require('express');
+
+  // const speakersRoute = require('./speakers');
+  // const feedbackRoute = require('./feedback');
+
+  // const router = express.Router();
+
+  // module.exports = () => {
+  //   router.get('/', (request, response) => {
+  //     response.render('pages/index', { pageTitle: 'Welcome'});
+  //   });
+
+  //   router.use('/speakers', speakersRoute());
+  //   router.use('/feedback', feedbackRoute());
+  //   return router;
+  // }
+
+// Running will cause 'Type Error: speakersRoute is not a Function' as feedback.js and speakers.js are empty
+
+// >> speakers.js
+
+  // const express = require('express');
+
+  // const router = express.Router();
+
+  // module.exports = () => {
+
+  //   router.get('/', (request, response) => {
+  //     return response.send('Speakers List')
+  //   });
+
+  //   router.get('/:shortname', (request, response) => {
+  //     return response.send(`Detail page of ${request.params.shortname}`);
+  //   });
+
+  //   return router;
+  // }
+
+// >> feedback.js
+
+  // const express = require('express');
+
+  // const router = express.Router();
+
+  // module.exports = () => {
+
+  //   router.get('/', (request, response) => {
+  //     return response.send('Feedback page');
+  //   });
+
+  //   router.post('/:shortname', (request, response) => {
+  //     return response.send('Feedback form posted');
+  //   });
+
+  //   return router;
+  // }
+
+// localhost:3000/speakers >> 
+// localhost:3000/feedback >> Feedback page
+
+
+// // Add business logic   -----------------------<<
+
+// Move 'provided/services' folder to Root folder > BUILDING-WEBSITE-NODEJS-EXPRESSJS >> services
+  // services >> FeedbackService.js & SpeakerService.js
+// Move 'provided/data' folder to Root folder > BUILDING-WEBSITE-NODEJS-EXPRESSJS >> data
+  // data >> feedback.json & speakers.json
+
+// data >> feedback.json
+  // [
+  //   {
+  //     "name": "Frank",
+  //     "email": "frank-smith@gmail.com",
+  //     "title": "Best Meetup Ever",
+  //     "message": "I really love this meetup. Please don't let it end."
+  //   },
+  //   {
+  //     "name": "Jane",
+  //     "email": "jane-miller@gmail.com",
+  //     "title": "Metting Time",
+  //     "message": "Would you consider moving the meeting time 30 minutes to about 6pm."
+  //   },
+  //   {
+  //     "name": "Roy",
+  //     "email": "roy-jones@gmail.com",
+  //     "title": "Great Speaker",
+  //     "message": "I really enjoyed the speaker this month. Would love to hear another presentation."
+  //   }
+
+  // ]
+
+// data >> speakers.json
+  // {
+  //   "speakers": [
+  //     {
+  //       "title": "Art in Full Bloom",
+  //       "name": "Lorenzo Garcia",
+  //       "shortname": "Lorenzo_Garcia",
+  //       "summary": "Drawing and painting flowers may seem like a first-year art student's assignment",
+  //       "description": "<p>Lorenzo was born in Mexico, but grew up in Southern California after </p>",
+  //       "artwork": [
+  //         "Lorenzo_Garcia_01_tn.jpg",
+  //         "Lorenzo_Garcia_02_tn.jpg",
+  //         "Lorenzo_Garcia_03_tn.jpg",
+  //         "Lorenzo_Garcia_04_tn.jpg"
+  //       ] 
+  //     },
+  //     {
+  //       "title": "Deep Sae Wonders",
+  //       "name": "Hilary Goldwynn",
+  //       "shortname": "Hilary_Goldwynn",
+  //       "summary": "Hilary is a sophomore art sculpture student at New York University",
+  //       "description": "<p>Hilary is a sophomore art sculpture student at New York University </p>",
+  //       "artwork": [
+  //         "Hilary_Goldwynn_01_tn.jpg",
+  //         "Hilary_Goldwynn_02_tn.jpg",
+  //         "Hilary_Goldwynn_03_tn.jpg",
+  //         "Hilary_Goldwynn_04_tn.jpg"
+  //       ] 
+  //     }
+  //   ]
+  // }
+
+
+// services >> SpeakerService.js
+
+  // const fs = require("fs");
+  // const util = require("util");
+   
+  // // We want to use async/await with fs.readFile - util.promisfy gives us that
+  // const readFile = util.promisify(fs.readFile);
+
+  // //Logic for fetching speakers information
+  // class SpeakerService {
+
+  //   //Constructor @param {*} datafile Path to a JSOn file that contains the speakers data
+
+  //   constructor(datafile) {
+  //     this.datafile = datafile;
+  //   }
+  // }
+
+  // // Returns a list of speakers name and short name
+  // async getNames() {
+  //   const data = await this.getData();
+
+  //   // We are using map() to transform the array we get into another one
+  //   return data.map(speaker => {
+  //     return { name: speaker.name, shortname: speaker.shortname };
+  //   });
+  // }
+
+  // // Get all artwork
+  // async getAllArtwork() {
+  //   const data = await this.getData();
+
+  //   // Array.reduce() is used to traverse all speakers and 
+  //   // create an array that contains all artwork
+  //   const artwork = data.reduce((acc, elm) => {
+  //     if (elm.artwork) {
+  //       // eslint-disable-next-line no-param-reassign
+  //       acc = [...acc, ...elm.artwork];
+  //     }
+  //     return acc;
+  //   }, []);
+  //   return artwork;
+  // }
+
+  // // Get all artwork of a given speaker @param {*} shortname The speakers short name
+
+  // async getArtworkForSpeaker(shortname) {
+  //   const data = await this.getData();
+  //   const speaker = data.find(elm => {
+  //     return elm.shortname === shortname;
+  //   });
+  //   if (!speaker || !speaker.artwork) return null;
+  //   return speaker.artwork;
+  // }
+
+// services >> FeedbackService.js
+
+  // const fs = require("fs");
+  // const util = require("util");
+
+  // const readFile = util.promisify(fs.readFile);
+  // const writeFile = util.promisify(fs.writeFile);
+
+  // //Logic for reading and writing feedback data
+  // class FeedbackService {
+
+  //   //Constructor @param {*} datafile Path to a JSOn file that contains the feedback data
+
+  //   constructor(datafile) {
+  //     this.datafile = datafile;
+  //   }
+
+  //   //Get all feedback items
+  //   async getList() {
+  //     const data = await this.getData();
+  //     return data;
+  //   }
+
+  //   //Add a new feedback item @param {*} name, title, message
+  //   async addEnrty(name, email, title, message) {
+  //     const data = (await this.getData()) || [];
+  //     data.unshift({ name, email, title, message });
+  //     return writeFile(this.datafile, JSON.stringify(data));
+  //   }
+
+  //   //Fetches feedback data from the JSON file provided to the constructor
+  //   async getData() {
+  //     const data = await readFile(this.datafile, 'utf8');
+  //     if (!data) return [],
+  //   }
+  // }
+
+
+
+// Now provided folder will be empty
+
+// >> server.js
+
+  // const express = require('express');
+  // const path = require('path');
+
+  // const FeedbackService = require('./services/FeedbackService');
+  // const SpeakersService = require('./services/SpeakerService');
+
+  // const feedbackService = new FeedbackService('./data/feedback.json');
+  // const speakersService = new SpeakersService('./data/speakers.json');
+
+  // const routes = require('./routes');
+
+  // const app = express();
+
+  // const port = 3000;
+
+  // app.set('view engine', 'ejs');
+  // app.set('views', path.join(__dirname, './views'));
+
+  // app.use(express.static(path.join(__dirname, './static')));
+
+  // app.use(
+  //   '/', 
+  //   routes({
+  //     feedbackService,
+  //     speakersService,
+  // }));
+
+  // app.listen(port, () => {
+  //   console.log(`Express server listening on port ${port}!`);
+  // });
+
+// >> index.js
+
+  // const express = require('express');
+
+  // const speakersRoute = require('./speakers');
+  // const feedbackRoute = require('./feedback');
+
+  // const router = express.Router();
+
+  // module.exports = params => {
+  //   router.get('/', (request, response) => {
+  //     response.render('pages/index', { pageTitle: 'Welcome'});
+  //   });
+
+  //   router.use('/speakers', speakersRoute(params));
+  //   router.use('/feedback', feedbackRoute(params));
+  //   return router;
+  // }
+
+// >> speakers.js
+
+  // const express = require('express');
+
+  // const router = express.Router();
+
+  // module.exports = (params) => {
+
+  //  //const speakersService = params.speakersService; // same as below line
+  //   const {speakersService} = params;
+
+  //   router.get('/', async (request, response) => {
+  //     const speakers = await speakersService.getList();
+  //     return response.json(speakers);
+  //   });
+
+  //   router.get('/:shortname', (request, response) => {
+  //     return response.send(`Detail page of ${request.params.shortname}`);
+  //   });
+
+  //   return router;
+  // }
+
+// >> feedback.js
+
+  // const express = require('express');
+
+  // const router = express.Router();
+
+  // module.exports = (params) => {
+
+  //   const { feedbackService } = params;
+
+  //   router.get('/', async (request, response) => {
+  //     const feedback = await feedbackService.getList();
+  //     return response.json(feedback);
+  //   });
+
+  //   router.post('/:shortname', (request, response) => {
+  //     return response.send('Feedback form posted');
+  //   });
+
+  //   return router;
+  // }
+
+// localhost:3000/speakers
+// localhost:3000/feedback 
+
+// // Add a session management middleware  -----------------------<<
+
+// We will use cookie session for express.....
+
+// BUILDING-WEBSITE-NODEJS-EXPRESSJS $ npm install cookie-session
+// BUILDING-WEBSITE-NODEJS-EXPRESSJS $ npm run dev
+
+// >> server.js
+
+  // const express = require('express');
+  // const path = require('path');
+  // const cookieSession = require('cookie-session');
+
+  // const FeedbackService = require('./services/FeedbackService');
+  // const SpeakersService = require('./services/SpeakerService');
+
+  // const feedbackService = new FeedbackService('./data/feedback.json');
+  // const speakersService = new SpeakersService('./data/speakers.json');
+
+  // const routes = require('./routes');
+
+  // const app = express();
+
+  // const port = 3000;
+
+  // app.set('trust proxy', 1);
+
+  // app.use(cookieSession({
+  //   name: 'session',
+  //   keys: ['Ghdur6789w', 'hhjs5564x', 'asdf4567y', 'ghjkl6789z'],
+  //   })
+  // );
+  // app.set('view engine', 'ejs');
+  // app.set('views', path.join(__dirname, './views'));
+
+  // app.use(express.static(path.join(__dirname, './static')));
+
+  // app.use(
+  //   '/', 
+  //   routes({
+  //     feedbackService,
+  //     speakersService,
+  // }));
+
+  // app.listen(port, () => {
+  //   console.log(`Express server listening on port ${port}!`);
+  // });
+
+ // routes >> index.js
+
+  // const express = require('express');
+
+  // const speakersRoute = require('./speakers');
+  // const feedbackRoute = require('./feedback');
+
+  // const router = express.Router();
+
+  // module.exports = params => {
+  //   router.get('/', (request, response) => {
+
+  //     // if(!request.session.visitcount) {
+  //     //   request.session.visitcount = 0;
+  //     // }
+  //     // request.session.visitcount += 1;
+  //     // console.log(`Number of visits: ${request.session.visitcount}`)
+
+  //     response.render('pages/index', { pageTitle: 'Welcome' });
+  //   });
+
+  //   router.use('/speakers', speakersRoute(params));
+  //   router.use('/feedback', feedbackRoute(params));
+  //   return router;
+  // }
+
+// localhost:3000  >>Refresh multiple times >>Terminal >>Number of visits: 7
+
+
+// // Create a site-wide layout   -----------------------<< INCOMPLETE
+
+// Create New Folder : BUILDING-WEBSITE-NODEJS-EXPRESSJS >> views >> layout
+// Copy index.ejs to views >> pages >> index.ejs
+// <% include(`../pages/${template}`) %>
+
+// // Using partials with EJS  -----------------------<< 
+
+// Create New folder BWNE >> views >> layout >> partials
+// Create New File  BWNE >> views >> layout >> partials >> navigation.egs
+
+// Copy navigation code form header part of index.js...to navigation.egs
+// Fix all href links as (href="/feedback")
+// Insert it after header <%- include('./partials/navigation') %>
+// Cut the <script> section ...put it in BWNE >> views >> layout >> partials >> script.js
+// Add <% include('./partials/scripts') %>
+
+// // Template variables in more detail    -----------------------<<
+// Goto >> server.js 
+
+// >Add someVariable as a global variable 
+// app.use((request, response, next) => {
+//   response.locals.someVariable = 'hello';
+//   return next();
+// });  
+
+// Some variables are set at start of appln and are available till the application lifecycle.
+//   app.locals.siteName = 'ROUX Meetups';
+// >To use that variable goto views >> layout >> index.js
+//   <title><%= siteName %> | <%= pageTitle %></title>
+// Also in views >> layout >> partials >> navigation.js
+//   <a href="/" class="navbar-brand"><%=siteName %></a>
+
+// app.use((request, response, next) => {
+//   try {
+//     const names = await speakersService.getName();
+//     response.locals.speakerNames = names; 
+//     console.log(response.locals)
+//     return next();
+//   } catch (err) {
+//     return next(err)
+//   }
+// });  
+
+// // Looping through lists in templates    -----------------------<<
+// Goto BWNE >> views >> layout >> partials >> navigation.js
+
+// <% speakerName.forEach(function (speaker) {%>
+//     <a class="dropdown-item" href="/speakers/<%=speaker.shortname%>"> <%=speaker.name%> </a>
+// <})%>
+
+[ INCOMPLETE ]
+
+// // Creating a list page   -----------------------<< 
+// // Using parameter routes   -----------------------<<
+// // Challenge: Partials and lists   -----------------------<<
+
+// // Solution: Partials and lists   -----------------------<<
+// <%- include('./partials/artwork')%>
+// <% artwork.forEach(function (item, key) {%>
+//   <img src="/images/artwork<%=item%>" alt="Artwork <%=key%>" />
+// <%})%>
+[ INCOMPLETE ]
+
+// // How to handle errors in express   -----------------------<<
+
+// >> server.js
+
+// app.get('/throw', (request, response, next) => {
+//     throw new Error('Something did throw!');
+// });
+// localhost:3000/throw
+
+// Also handling errors from Async events
+// app.get('/throw', (request, response, next) => {
+//   setTimeout(() => {
+//     return next( new Error('Something did throw!'));
+//   }, 5000);  
+// });
+// localhost:3000/throw
+
+// >> SpeakerService.js
+
+// async getNames() {
+//   const data = await this.getData();
+
+//   return data.map(speaker => {
+//     throw new Error('Async await error');
+//     return { name: speaker.name, shortname: speaker.shortname };
+//   });
+// }
+
+// >> server.js
+// app.use(async (request, response, next) => {
+//   try {
+//     const names = await speakersService = names;
+//     return next();
+//   } catch (err) {
+//     return next(err);
+//   }
+// })
+
+// >> index.js
+
+// module.exports = params => {
+//   const { speakersService } = params;
+
+//   router.get('/', (request, response, next) => {
+//     try {
+//       const artwork = await speakersService.getAllArtwork();
+//       const topSpeakers = await speakersService.getList();
+//       return response.render('layout', { 
+//         pageTitle: 'Welcome', 
+//         template: 'index', 
+//         topSpeakers, 
+//         artwork
+//       });
+//     } catch(err) {
+//       return next(err);
+//     }
+//   });
+
+//   router.use('/speakers', speakersRoute(params));
+//   router.use('/feedback', feedbackRoute(params));
+//   return router;
+
+// >> speakers.js
+
+// module.exports = params => {
+//   const { speakersService } = params;
+
+//   router.get('/', async (request, response, next) => {
+//     try {
+//       const speakers = await speakersService.getList();
+//       const artwork = await speakersService.getAllArtwork();
+//       return response.render('layout', { 
+//         pageTitle: 'Speakers', 
+//         template: 'speakers', 
+//         speakers, 
+//         artwork,
+//       });
+//     } catch(err) {
+//       return next(err);
+//     }
+//   });
+
+//   router.get('/:shortname', async (request, response, next) => {
+//     try {
+//       const speaker = await speakersService.getSpeaker(request.params.shortname);
+//       const artwork = await speakersService.getArtworkForSpeaker(request.params.shortnam);
+//       response.render('layout', {
+//         pageTitle: 'Speakers', 
+//         template: 'speakers-detail', 
+//         speakers, 
+//         artwork, 
+//     });
+//     } catch {
+//       return next(err);
+//     } 
+//   });
+
+//   return router;
+// };
+
+
+// >> feedback.js
+
+// const express = require('express');
+
+// const router = express.Router();
+
+// module.exports = (params) => {
+
+//   const { feedbackService } = params;
+
+//   router.get('/', async (request, response, next) => {
+//     try {
+//       const feedback = await feedbackService.getList();
+//       return response.json(feedback);
+//     } catch {
+//       return next(err);
+//     }
+//   });
+
+//   router.post('/', (request, response) => {
+//     return response.send('Feedback form posted');
+//   });
+
+//   return router;
+// }
+
+// // Creating an error page   -----------------------<<
+// Ref : https://bootsnipp.com/snippets/qr73D
+
+// Create New File >> BWEN >> routes >> views >> error.ejs
+{/* <html>
+  <head>
+    <title>An error occured</title>
+    <link rel="stylesheet" href="/css/error.css" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="d-flex justify-content-center align-items-center" id="main">
+    <h1 class="mr-3 pr-3 align-top border-right inline-block align-content-center">404</h1>
+      <div class="inline-block align-middle">
+        <h2 class="font-weight-normal lead" id="desc">The page you requested was not found.</h2>
+      </div>
+    </div>
+  </body>
+</html> */}
+
+// Create New File : BWNE >> static >> css >> error.css
+// #main {
+//   height: 100vh;
+// }
+
+//>> server.js
+  // $ npm install https-errors
+// const createError = require('https-errors')
+// app.use((request, response, next) => {
+//   return next(createError(404, 'File not found'));
+//   const status = err.status || 500;
+//   response.locals.status = status;
+//   response.status(status);
+//   response.render('error');
+// });
+// app.use((err, request, response, next) => {
+//   response.locals.message = err.message;
+// })
+
+// // Populating the error page   -----------------------<<
+// >>error.ejs
+  // 400 to <%=status%>
+  // The page you requested was not found to <%=message%>
+// Reload
+// localhost:3000/hello
+// localhost:3000
+
+//>> server.js
+ 
+  // app.use((err, request, response, next) => {
+  //   response.locals.message = err.message;
+  //   console.error(err)
+  //   const status = err.status || 500;
+  //   response.locals.status = status;
+  //   response.status(status);
+  //   response.render('error');
+  // });
+
+// Terminal >> Some error
+
+// Remove something from index page
+
+
+// // Creating a form template   -----------------------<<
+// Copy from BWNE >> static >> feedback.html  and...
+// Create a New File >> views >> pages >> feedback.ejs
+// Remove <header></header> and <script></script> section
+
+// routes >> feedback.js 
+
+  // const express = require('express');
+
+  // const router = express.Router();
+
+  // module.exports = (params) => {
+
+  //   const { feedbackService } = params;
+
+  //   router.get('/', async (request, response, next) => {
+  //     try {
+  //       const feedback = await feedbackService.getList();
+  //       return response.render('layout', { 
+  //         pageTitle: 'Feedback', 
+  //         template: 'feedback', 
+  //         feedback,
+  //       });
+  //     } catch(err) {
+  //       return next(err);
+  //     }
+  //   });
+
+  //   router.post('/', (request, response) => {
+  //     return response.send('Feedback form posted');
+  //   });
+
+  //   return router;
+  // }
+
+// feedback.ejs
+// Remove all list items...keep one for Blueprint.
+{/* <aside class="col-md-8">
+  <div class="maincontent feedback">
+    <h1>Recent Feedback</h1>
+
+    <div class="feedback-items">
+      <% feedback.forEach(function (item) {%>
+      <div class="feedback-item item-list media-list">
+        <div class="feedback-item media">
+          <div class="feedback-info media-body">
+            <div class="feedback-head">
+              <div class="feedback-title"><%=item.title%></div>
+              <small>by <%=item.name%></small>
+            </div>
+            <div class="feedback-message"><%=item.message%></div>
+          </div>
+        </div>
+      </div>
+    <%})%>
+    </div>
+  </div>
+</aside> */}
+
+// // Handling POST requests    -----------------------<<
+
+// >> feedback.ejs
+
+{/* <div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="maincontent">
+        <h1>Send us feedback</h1>
+        <form class="feedback-form" method="POST" action="/feedback">
+          <div class="form-group">
+            <label for="feedback-form-name"> Name </label>
+            <input type="text" class="form-control" id="feedback-form-name" name="name" placeholder="Enter your name" />
+          </div>
+          <div class="form-group">
+            <label for="feedback-form-email"> Email </label>
+            <input type="text" class="form-control" id="feedback-form-email" name="email" placeholder="Enter your email address" />
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div> */}
+
+// >> feedback.js
+
+  // const express = require('express');
+
+  // const router = express.Router();
+
+  // module.exports = (params) => {
+
+  //   const { feedbackService } = params;
+
+  //   router.get('/', async (request, response, next) => {
+  //     try {
+  //       const feedback = await feedbackService.getList();
+  //       return response.render('layout', { 
+  //         pageTitle: 'Feedback', 
+  //         template: 'feedback', 
+  //         feedback,
+  //       });
+  //     } catch(err) {
+  //       return next(err);
+  //     }
+  //   });
+
+  //   router.post('/', (request, response) => {
+  //     console.log(request.body);
+  //     return response.send('Feedback form posted');
+  //   });
+
+  //   return router;
+  // }
+
+// Terminal >> $ npm install body-parser
+
+// >> server.js
+
+  // const express = require('express');
+  // const path = require('path');
+  // const cookieSession = require('cookie-session');
+  // const createError = require('http-errors');
+
+  // const bodyParser = require('body-parser');
+
+  // const FeedbackService = require('./services/FeedbackService');
+  // const SpeakersService = require('./services/SpeakerService');
+
+  // const feedbackService = new FeedbackService('./data/feedback.json');
+  // const speakersService = new SpeakersService('./data/speakers.json');
+
+  // const routes = require('./routes');
+
+  // const app = express();
+
+  // app.locals.siteName = 'ROUX Academy';
+
+  // const port = 3000;
+
+  // app.set('trust proxy', 1);
+
+  // app.use(cookieSession({
+  //   name: 'session',
+  //   keys: ['Ghdur6789w', 'hhjs5564x', 'asdf4567y', 'ghjkl6789z'],
+  //   })
+  // );
+
+  // app.use(bodyParser.urlencoded({ extended: true }));
+
+  // app.set('view engine', 'ejs');
+  // app.set('views', path.join(__dirname, './views'));
+
+  // app.use(express.static(path.join(__dirname, './static')));
+
+  // app.use(
+  //   '/', 
+  //   routes({
+  //     feedbackService,
+  //     speakersService,
+  // }));
+
+  // app.listen(port, () => {
+  //   console.log(`Express server listening on port ${port}!`);
+  // });
+
+// Terminal: $ npm run dev
+// localhost:3000/feedback >> Feedback form posted
+// See in chrome developer tools >> Network >> feedback >> Headers
+
+// // Validating and sanitizing user input    -----------------------<<
+// Terminal: $npm install express-validator 
+
+// >> feedback.js
+
+  // const express = require('express');
+
+  // const { check, validationResult } = require('express-validator');
+
+  // const router = express.Router();
+
+  // module.exports = (params) => {
+
+  //   const { feedbackService } = params;
+
+  //   router.get('/', async (request, response, next) => {
+  //     try {
+  //       const feedback = await feedbackService.getList();
+
+  //       const errors = request.session.feedback ? request.session.feedback.errors : false;
+  //       request.session.feedback = {};
+
+  //       return response.render('layout', { 
+  //         pageTitle: 'Feedback', 
+  //         template: 'feedback', 
+  //         feedback,
+  //       });
+  //     } catch(err) {
+  //       return next(err);
+  //     }
+  //   });
+
+  //   router.post('/', [
+  //     check('name')
+  //       .trim()
+  //       .isLength({ min: 3 })
+  //       .escape()
+  //       .withMessage('A name is required'),
+  //     check('email')
+  //       .trim()
+  //       .isEmail()
+  //       .normalizeEmail()
+  //       .withMessage('A valid email address is required'),
+  //     check('title')
+  //       .trim()
+  //       .isLength({ min: 3 })
+  //       .escape()
+  //       .withMessage('A title is required'),
+  //     check('message')
+  //       .trim()
+  //       .isLength({ min: 5 })
+  //       .escape()
+  //       .withMessage('A message is required'),
+  //   ],
+  //   (request, response) => {
+  //     const errors = validationResult(request);
+
+  //     if(!errors.isEmpty()) {
+  //       request.session.feedback = {
+  //         errors: errors.array(), 
+  //       };
+  //       return response.redirect('/feedback');
+  //     }
+  //     //console.log(request.body);
+  //     return response.send('Feedback form posted');
+  //   });
+
+  //   return router;
+  // };
+
+// >> feedback.ejs
+
+// <div class="container mt-4">
+//   <div class="row">
+//     <div class="col-md-4">
+//       <div class="maincontent">
+//         <h1>Send us feedback</h1>
+
+//         <% if(locals.errors) {%>
+//           <div class="alert alert-danger">
+//             <ul>
+//               <% errors.forEach(function (error) {%>
+//               <li><%= error.msg %></li>
+//             <%})%>
+//             </ul>
+//           </div>
+//         <%}%>
+
+//         <form class="feedback-form" method="POST" action="/feedback">
+//           <div class="form-group">
+//             <label for="feedback-form-name"> Name </label>
+//             <input type="text" class="form-control" id="feedback-form-name" name="name" placeholder="Enter your name" />
+//           </div>
+//           <div class="form-group">
+//             <label for="feedback-form-email"> Email </label>
+//             <input type="text" class="form-control" id="feedback-form-email" name="email" placeholder="Enter your email address" />
+//           </div>
+
+//         </form>
+//       </div>
+//     </div>
+//   </div>
+// </div> 
+
+// Terminal: $npm run dev
+
+// // Storing data   -----------------------<<
+
+// services >> FeedbackService.js
+
+  // const fs = require("fs");
+  // const util = require("util");
+
+  // const readFile = util.promisify(fs.readFile);
+  // const writeFile = util.promisify(fs.writeFile);
+
+  // //Logic for reading and writing feedback data
+  // class FeedbackService {
+
+  //   //Constructor @param {*} datafile Path to a JSOn file that contains the feedback data
+
+  //   constructor(datafile) {
+  //     this.datafile = datafile;
+  //   }
+
+  //   //Get all feedback items
+  //   async getList() {
+  //     const data = await this.getData();
+  //     return data;
+  //   }
+
+  //   //Add a new feedback item @param {*} name, title, message
+  //   async addEnrty(name, email, title, message) {
+  //     const data = (await this.getData()) || [];
+  //     data.unshift({ name, email, title, message }); // unshift _prepends the data
+  //     return writeFile(this.datafile, JSON.stringify(data));
+  //   }
+
+  //   //Fetches feedback data from the JSON file provided to the constructor
+  //   async getData() {
+  //     const data = await readFile(this.datafile, 'utf8');
+  //     if (!data) return [],
+  //   }
+  // }
+
+
+// >> feedback.js
+
+  // const express = require('express');
+
+  // const { check, validationResult } = require('express-validator');
+
+  // const router = express.Router();
+
+  // module.exports = (params) => {
+
+  //   const { feedbackService } = params;
+
+  //   router.get('/', async (request, response, next) => {
+  //     try {
+  //       const feedback = await feedbackService.getList();
+
+  //       const errors = request.session.feedback ? request.session.feedback.errors : false;
+         
+  //       const successMessage = request.session.feedback ? request.session.feedback.message : false;
+         
+  //       request.session.feedback = {};
+
+  //       return response.render('layout', { 
+  //         pageTitle: 'Feedback', 
+  //         template: 'feedback', 
+  //         feedback,
+  //         errors, 
+  //         successMessage,
+  //       });
+  //     } catch(err) {
+  //       return next(err);
+  //     }
+  //   });
+
+  //   router.post('/', [
+  //     check('name')
+  //       .trim()
+  //       .isLength({ min: 3 })
+  //       .escape()
+  //       .withMessage('A name is required'),
+  //     check('email')
+  //       .trim()
+  //       .isEmail()
+  //       .normalizeEmail()
+  //       .withMessage('A valid email address is required'),
+  //     check('title')
+  //       .trim()
+  //       .isLength({ min: 3 })
+  //       .escape()
+  //       .withMessage('A title is required'),
+  //     check('message')
+  //       .trim()
+  //       .isLength({ min: 5 })
+  //       .escape()
+  //       .withMessage('A message is required'),
+  //   ],
+  //   async (request, response) => {
+  //     const errors = validationResult(request);
+
+  //     if(!errors.isEmpty()) {
+  //       request.session.feedback = {
+  //         errors: errors.array(), 
+  //       };
+  //       return response.redirect('/feedback');
+  //     }
+  //     //console.log(request.body);
+
+  //     const { name, email, title, message } = request.body;
+  //     await feedbackService.addEnrty(name, email, title, message);
+  //     request.session.feedback = {
+  //       message: 'Thank you for your feedback!',
+  //     };
+  //     return response.redirect('/feedback');
+  //   });
+
+  //   return router;
+  // };
+
+
+// BWNE >> views >> pages >> feedback.ejs
+
+// <div class="container mt-4">
+//   <div class="row">
+//     <div class="col-md-4">
+//       <div class="maincontent">
+//         <h1>Send us feedback</h1>
+
+//         <% if(locals.errors) {%>
+//           <div class="alert alert-danger">
+//             <ul>
+//               <% errors.forEach(function (error) {%>
+//               <li><%= error.msg %></li>
+//             <%})%>
+//             </ul>
+//           </div>
+//         <%} else if(locals.successMessage) {%>
+//           <div class="alert alert-success">
+//            <% successMessage %> 
+//           </div>
+//         <%}%>
+
+//         <form class="feedback-form" method="POST" action="/feedback">
+//           <div class="form-group">
+//             <label for="feedback-form-name"> Name </label>
+//             <input type="text" class="form-control" id="feedback-form-name" name="name" placeholder="Enter your name" />
+//           </div>
+//           <div class="form-group">
+//             <label for="feedback-form-email"> Email </label>
+//             <input type="text" class="form-control" id="feedback-form-email" name="email" placeholder="Enter your email address" />
+//           </div>
+
+//         </form>
+//       </div>
+//     </div>
+//   </div>
+// </div> 
+
+
+// // A little intro to REST APIs    -----------------------<<
+
+// REST -Representational State Transfer
+
+// HTTP Verbs and REST  //http://localhost:3000/feedback
+
+// app.get('/feedback', (req, res, next) => {
+//   // Do something
+//   return res.send('Hello');
+// });
+
+// Verb : 
+//   .get -  Used to request the page [Request a resource]
+//   .post -  Mostly commanly used for forms because it allows 
+//         to send large amounts of data in the payload [ Create a resource ]
+//   .put -  Is the part of http standard [ Update a resource ]
+//   .delete - Also a part of http standard [ Delete a resource ]
+
+// Regular route will return html data but _REST route will return data as _JSON
+
+// Create, Update, and Delete (CRUD) via REST
+
+// * HTTP GET http://mysite.com/users  
+//   >> Getting all users
+
+// * HTTP POST (payload) http://mysite.com/users
+//   >> Creating a new user
+
+// * HTTP GET http://mysite.com/users/42
+//   >> Getting the user with ID 42
+
+// * HTTP PUT (payload) http://mysite.com/users/42
+//   >> Manipulate the user object in database
+
+// * HTTP DELETE http://mysite.com/users/42
+//   >> Deleting the user with the ID 42
+
+
+// REST in _Web Applications
+
+//           HTTP GET http://mysite.com
+//  [ Browser ]  -------------------------------->  [ Back end ]
+
+//           HTML page with JavaScript
+//  [ Browser ]  -------------------------------->  [ Back end ]
+
+//               XHR (AJAX)
+//  | Browser |  <--------------------------------  | Back end |
+//  |  [JS] |  -------------------------------->  | ________ |
+//                 REST
+
+// // Creating and testing an API endpoint   -----------------------<<
+
+// BWNE >> routes >> feedback.js
+
+  // const express = require('express');
+
+  // const { check, validationResult } = require('express-validator');
+
+  // const router = express.Router();
+
+  // const validations = [
+  //   check('name')
+  //     .trim()
+  //     .isLength({ min: 3 })
+  //     .escape()
+  //     .withMessage('A name is required'),
+  //   check('email')
+  //     .trim()
+  //     .isEmail()
+  //     .normalizeEmail()
+  //     .withMessage('A valid email address is required'),
+  //   check('title')
+  //     .trim()
+  //     .isLength({ min: 3 })
+  //     .escape()
+  //     .withMessage('A title is required'),
+  //   check('message')
+  //     .trim()
+  //     .isLength({ min: 5 })
+  //     .escape()
+  //     .withMessage('A message is required'),
+  // ];
+
+  // module.exports = (params) => {
+
+  //   const { feedbackService } = params;
+
+  //   router.get('/', async (request, response, next) => {
+  //     try {
+  //       const feedback = await feedbackService.getList();
+
+  //       const errors = request.session.feedback ? request.session.feedback.errors : false;
+         
+  //       const successMessage = request.session.feedback ? request.session.feedback.message : false;
+         
+  //       request.session.feedback = {};
+
+  //       return response.render('layout', { 
+  //         pageTitle: 'Feedback', 
+  //         template: 'feedback', 
+  //         feedback,
+  //         errors, 
+  //         successMessage,
+  //       });
+  //     } catch(err) {
+  //       return next(err);
+  //     }
+  //   });
+
+  //   router.post('/', validations, async (request, response, next) => {
+
+  //     try {
+  //       const errors = validationResult(request);
+
+  //       if(!errors.isEmpty()) {
+  //         request.session.feedback = {
+  //           errors: errors.array(), 
+  //         };
+  //         return response.redirect('/feedback');
+  //       }
+  //       //console.log(request.body);
+   
+  //       const { name, email, title, message } = request.body;
+  //       await feedbackService.addEnrty(name, email, title, message);
+  //       request.session.feedback = {
+  //         message: 'Thank you for your feedback!',
+  //       };
+  //       return response.redirect('/feedback');
+  //     } catch (err) {
+  //       return next(err);
+  //     }
+
+  //   });
+
+  //   router.post('/api', validations, async ( request, response, next ) => {
+
+  //     try {
+  //       const erros = validationResult(request);
+  //       if (!errors.isEmpty()) {
+  //         return response.json({errors: errors.array()});
+  //       }
+  //       const { name, email, title, message } = request.body;
+  //       await feedbackService.addEnrty(name, email, title, message);
+  //       const feedback = await feedbackService.getList();
+  //       return response.json({ feedback });
+  //     } catch (err) {
+  //       return next(err);
+  //     }
+  //   });
+
+  //   return router;
+  // };
+
+// https://www.getpostman.com >> Download
+// Open >> Skip Sign In >> + besides Launchpad
+// POST v http://localhost:3000/feedback/api 
+//  >> Select Body : raw, 
+//  >> Selsct Text v to JSON
+
+// {
+//   "name": "Daniel",
+//   "email": "test@test.com",
+//   "title": "REST Title Test",
+//   "message": "This was sent via REST"
+// }
+
+// SEND
+
+// We get error object as a response ( No data present here ) ..need body parsor for JSON
+
+// >> server.js
+
+  // const express = require('express');
+  // const path = require('path');
+  // const cookieSession = require('cookie-session');
+  // const createError = require('http-errors');
+
+  // const bodyParser = require('body-parser');
+
+  // const FeedbackService = require('./services/FeedbackService');
+  // const SpeakersService = require('./services/SpeakerService');
+
+  // const feedbackService = new FeedbackService('./data/feedback.json');
+  // const speakersService = new SpeakersService('./data/speakers.json');
+
+  // const routes = require('./routes');
+
+  // const app = express();
+
+  // app.locals.siteName = 'ROUX Academy';
+
+  // const port = 3000;
+
+  // app.set('trust proxy', 1);
+
+  // app.use(cookieSession({
+  //   name: 'session',
+  //   keys: ['Ghdur6789w', 'hhjs5564x', 'asdf4567y', 'ghjkl6789z'],
+  //   })
+  // );
+
+  // app.use(bodyParser.urlencoded({ extended: true }));
+  // app.use(bodyParser.json());
+
+  // app.set('view engine', 'ejs');
+  // app.set('views', path.join(__dirname, './views'));
+
+  // app.use(express.static(path.join(__dirname, './static')));
+
+  // app.use(
+  //   '/', 
+  //   routes({
+  //     feedbackService,
+  //     speakersService,
+  // }));
+
+  // app.listen(port, () => {
+  //   console.log(`Express server listening on port ${port}!`);
+  // });
+
+// SEND again ....We get the Feedback Array >>> And te first item is item we just added.
+
+// // Add client side JavaScript   -----------------------<<
+
+// jQuery
+
+// BWNE >> views >> layouts >> partials >> scripts.ejs
+
+// <% if (locals.artwork {%>
+// <script src="/js/pixgrid.js"></script>
+// <%}%>
+
+// <% if (locals.feedback {%>
+// <script src="/js/feedback.js"></script>
+// <%}%>
+
+// We also have static >> js >> feedback.js
+// Now gallery also works, art is also loaded on the page that contains artwork
+
+
+// // Updating the page from REST    -----------------------<<
+// BWNE >> static >> js >> feedback.js
+
+// $(function feedback() {
+//   function updateFeedback(data) {
+//     const render = [];
+//     // Reset all status messages
+//     $('.feedback-status').empty();
+
+//     // All went well
+//     if (!data.errors && data.feedback) {
+//       // The input was valid - reset the form 
+//       $('.feedback-form').trigger('reset');
+
+//       $each(data.feedback, function createHtml(key, item) {
+//         render.push(`
+//         <div class="feedback-item item-list media-list">
+//           <div class="feedback-item-media">
+//             <div class="feedback-info media-body">
+//               <div class="feedback-head">
+//                 <div class="feedback-title">${item.title}</div>
+//                 <small>by ${item.name}</small>
+//               </div>
+//               <div class="feedback-message">
+//                 ${item.message}
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//         `);
+//       });
+//       // Update .................... vv ............
+//     }
+//   }
+// })
+
+// $('.feedback-form').submit(function submitFeedback(e) {
+//   // Prevent the default submit form event
+//   e.preventDefault();
+
+//   // XHR POST request
+//   $.post{
+//     '/feedback/api', 
+//     // Gather all data from the form and create a JSON object from it
+//     {
+//       name: $('#feedback-form-name').val(),
+//       email: $('#feedback-form-email').val(),
+//       title: $('#feedback-form-title').val(),
+//       message: $('#feedback-form-message').val(),
+//     },
+//     // Callback to be called with the data
+//     upateFeedback
+//   };
+// })
+
+// >> feedback.ejs
+
+// <div class="container mt-4">
+//   <div class="row">
+//     <div class="col-md-4">
+//       <div class="maincontent">
+//         <h1>Send us feedback</h1>
+
+//         <div class="feedback-status">
+//           <% if(locals.errors) {%>
+//             <div class="alert alert-danger">
+//               <ul>
+//                 <% errors.forEach(function (error) {%>
+//                 <li><%= error.msg %></li>
+//               <%})%>
+//               </ul>
+//             </div>
+//           <%} else if(locals.successMessage) {%>
+//             <div class="alert alert-success">
+//             <% successMessage %> 
+//             </div>
+//           <%}%>
+//         </div>
+         
+//         <form class="feedback-form" method="POST" action="/feedback">
+//           <div class="form-group">
+//             <label for="feedback-form-name"> Name </label>
+//             <input type="text" class="form-control" id="feedback-form-name" name="name" placeholder="Enter your name" />
+//           </div>
+//           <div class="form-group">
+//             <label for="feedback-form-email"> Email </label>
+//             <input type="text" class="form-control" id="feedback-form-email" name="email" placeholder="Enter your email address" />
+//           </div>
+//         </form>
+
+//       </div>
+//     </div>
+//   </div>
+// </div> 
+
+// Chrome dev tools >> Network >> XHR >>
+//   Enter details on Feedback page
+// SUBMIT
+// We see that api request is done >> Preview 
+// Something seems wrong with status message
+
+// >> feedback.js
+
+  //   router.post('/api', validations, async ( request, response, next ) => {
+
+  //     try {
+  //       const erros = validationResult(request);
+  //       if (!errors.isEmpty()) {
+  //         return response.json({errors: errors.array()});
+  //       }
+  //       const { name, email, title, message } = request.body;
+  //       await feedbackService.addEnrty(name, email, title, message);
+  //       const feedback = await feedbackService.getList();
+  //       return response.json({ feedback, successMessage: 'Thank you for your feedback'});
+  //     } catch (err) {
+  //       return next(err);
+  //     }
+  //   });
+
+  //   return router;
+  // };
+
+
+// // Build on what you've learned  _______ = ________  Building a Website with Node.js and Express.js

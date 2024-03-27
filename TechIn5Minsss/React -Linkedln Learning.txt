@@ -1,0 +1,1122 @@
+________________ React -Linkedln Learning ____________________
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React_Lnkdln_(React.js Essential Training 2020)</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel"></script>
+  <!-- <style>*{ text-align : center }</style> -->
+</head>
+<body>
+ <div id="root">_ _</div> 
+
+
+<!-- React_Apps.js -->
+<script type="text/babel"> 
+
+  // <!-- App.js -->
+  // <!-- React Element -- ->
+  // import React from 'react';
+  // import ReactDOM from 'react-dom';
+  // ReactDOM.render (
+  //   React.createElement (
+  //     "h1", {style : { color : "blue"} }, "Heyyy Everyone!"
+  //   ), document.getElementById("root")
+  // );
+
+  // --------------------------------------------------------------------
+  // <!-- App1.js -->
+  // <!-- React Elements -->
+  // import React from 'react';
+  // import ReactDOM from 'react-dom';
+  // ReactDOM.render (
+  //   <ul>
+  //     <li>Monday</li>
+  //     <li>Tuesday</li>
+  //     <li>Wednesday</li>
+  //   </ul>,
+  //   document.getElementById("root")
+  // );
+
+  // --------------------------------------------------------------------
+  // <!-- App2.js -->
+  // <!-- React Header Elements -->
+  // import React from 'react';
+  // import ReactDOM from 'react-dom';
+  // ReactDOM.render (
+  //   <div>
+  //     <h1>Header</h1>
+  //     <h2>Main</h2>
+  //     <h3>Footer</h3>
+  //   </div>,
+  //   document.getElementById("root")
+  // );
+
+  // --------------------------------------------------------------------
+  // <!-- App3.js -->
+  // <!-- React Components -->
+  // // import React from 'react';
+  // // import ReactDOM from 'react-dom';
+
+  // function Header() {
+  //   return (
+  //     <header>
+  //       <h1> Eve's Kitchen </h1>  
+  //     </header>
+  //   )   
+  // }
+
+  // function Main() {
+  //   return (
+  //     <section>
+  //      <p>We serve the most delicious food around.</p> 
+  //     </section>
+  //   )
+  // }
+
+  // function Footer() {
+  //   return (
+  //     <footer>
+  //       <p>It's true.</p>
+  //     </footer>
+  //   )
+  // }
+
+  // function App() {
+  //   return (
+  //     <div className="App">
+  //       <Header />
+  //       <Main />
+  //       <Footer />
+  //     </div>
+  //   )
+  // }
+
+  // // ReactDOM.render (
+  // //   <App /> ,
+  // //   document.getElementById("root")
+  // // );
+
+  // const container = document.getElementById('root');
+  // const root = ReactDOM.createRoot(container);
+  // root.render(<App />);
+
+  // --------------------------------------------------------------------
+  // <!-- App4.js -->
+  // <!-- React Header Properties -->
+
+  // import React from 'react';
+  // import ReactDOM from 'react-dom';
+
+  // console.log("Enabling js ...");
+  // function Header(props) {
+  //   return (
+  //     <header>
+  //       <h1> Hello {props.name}</h1>  
+  //     </header>
+  //   )   
+  // };
+  // ReactDOM.render (
+  //   <Header name = "Umesh"/> ,
+  //   document.getElementById("root")
+  // );
+
+  // --------------------------------------------------------------------
+  // <!-- App5.js -->
+  // <!-- React Properties -->
+
+  // import React from 'react';
+  // import ReactDOM from 'react-dom';
+
+  // function Header(props) {
+  //   return (
+  //     <header>
+  //       <h1> {props.name} Kitchen </h1>  
+  //     </header>
+  //   )   
+  // }
+
+  // function Main(props) {
+  //   return (
+  //     <section>
+  //      <p>We serve the most {props.adjective} food around.</p> 
+  //     </section>
+  //   )
+  // }
+
+  // function Footer(props) {
+  //   return (
+  //     <footer>
+  //       <p>Copyright @ {props.year}</p>
+  //     </footer>
+  //   )
+  // }
+
+  // function App() {
+  //   return (
+  //     <div className="App">
+  //       <Header name="Raja's"/>
+  //       <Main adjective="amazing"/>
+  //       <Footer year= { new Date().getFullYear() }/>
+  //     </div>
+  //   )
+  // }
+
+  // const container = document.getElementById('root');
+  // const root = ReactDOM.createRoot(container);
+  // root.render(<App />);
+
+  // --------------------------------------------------------------------
+  // <!-- App6.js -->
+  // <!-- React Properties -->
+
+  // import React from 'react';
+  // import ReactDOM from 'react-dom';
+
+  // function Header(props) {
+  //   return (
+  //     <header>
+  //       <h1> {props.name} Kitchen </h1>  
+  //     </header>
+  //   )   
+  // }
+
+  // function Main(props) {
+  //   return (
+  //     <section>
+  //       <p>We serve the most {props.adjective} food around.</p> 
+  //       <ul style={{textAlign: "left"}}> { /* Note: style property is in camelCase */ }
+  //         {props.dishes.map((dish) => (<li>{dish}</li>))}
+  //       </ul>
+  //     </section>
+  //   )
+  // }
+
+  // function Footer(props) {
+  //   return (
+  //     <footer>
+  //       <p>Copyright @ {props.year}</p>
+  //     </footer>
+  //   )
+  // }
+
+  // const dishes = [
+  //   "Macroni and Cheese", "Salmon", "Tofu with Vegetables", "Minestrone"
+  // ]
+
+   
+  // function App() {
+  //   return (
+  //     <div className="App">
+  //       <Header name="Raja's"/> 
+  //       <Main adjective="amazing" dishes={dishes}/>
+  //       <Footer year= { new Date().getFullYear() }/>
+  //     </div>
+  //   )
+  // }
+
+  // const container = document.getElementById('root');
+  // const root = ReactDOM.createRoot(container);
+  // root.render(<App />);
+
+
+  // --------------------------------------------------------------------
+  // <!-- App7.js -->
+  // <!-- React Properties and Keys -->
+
+  // import React from 'react';
+  // import ReactDOM from 'react-dom';
+
+  // function Header(props) {
+  //   return (
+  //     <header>
+  //       <h1> {props.name} Kitchen </h1>  
+  //     </header>
+  //   )   
+  // }
+
+  // function Main(props) {
+  //   return (
+  //     <section>
+  //       <p>We serve the most {props.adjective} food around.</p> 
+  //       <ul style={{textAlign: "left"}}> { /* Note: style property is in camelCase */ }
+  //         {props.dishes.map((dish, i) => (
+  //           <li key={dish.id}>{dish.title}</li>
+  //         ))}
+  //       </ul>
+  //     </section>
+  //   )
+  // }
+
+  // function Footer(props) {
+  //   return (
+  //     <footer>
+  //       <p>Copyright @ {props.year}</p>
+  //     </footer>
+  //   )
+  // }
+
+  // const dishes = [
+  //   "Macroni and Cheese", "Salmon", "Tofu with Vegetables", "Minestrone"
+  // ];
+
+  // const dishObjects = dishes.map((dish, i) => (
+  //   {id : i, title : dish}
+  // ))
+  // // console.log(dishObjects);
+
+  // function App() {
+  //   return (
+  //     <div className="App">
+  //       <Header name="Raja's"/> 
+  //       <Main adjective="amazing" dishes={dishObjects}/>
+  //       <Footer year= { new Date().getFullYear() }/>
+  //     </div>
+  //   )
+  // }
+
+  // const container = document.getElementById('root');
+  // const root = ReactDOM.createRoot(container);
+  // root.render(<App />);
+
+  // --------------------------------------------------------------------
+  // <!-- App8.js -->
+  // <!-- React Images-->
+
+  // import React from 'react';
+  // import ReactDOM from 'react-dom';
+  // import restaurant from "./restaurant.jpg"; 
+  // import logo from "./react.png";
+
+  // function Header(props) {
+  //   return (
+  //     <header>
+  //       <h1> {props.name} Kitchen </h1>  
+  //     </header>
+  //   )   
+  // }
+
+  // function Main(props) {
+  //   return (
+  //     <section>
+  //       <p>We serve the most {props.adjective} food around.</p> 
+  //       {//<img src="restaurant" height={200} alt="napkin and silverware at restaurent table"></img>
+  //       }
+  //       <img src="logo" height={200} alt="react logo"></img>
+  //       <ul style={{textAlign: "left"}}>  
+  //         {props.dishes.map((dish, i) => (
+  //           <li key={dish.id}>{dish.title}</li>
+  //         ))}
+  //       </ul>
+  //     </section>
+  //   )
+  // }
+
+  // function Footer(props) {
+  //   return (
+  //     <footer>
+  //       <p>Copyright @ {props.year}</p>
+  //     </footer>
+  //   )
+  // }
+
+  // const dishes = [
+  //   "Macroni and Cheese", "Salmon", "Tofu with Vegetables", "Minestrone"
+  // ];
+
+  // const dishObjects = dishes.map((dish, i) => (
+  //   {id : i, title : dish}
+  // ))
+  // // console.log(dishObjects);
+
+  // function App() {
+  //   return (
+  //     <div className="App">
+  //       <Header name="Raja's"/> 
+  //       <Main adjective="amazing" dishes={dishObjects}/>
+  //       <Footer year= { new Date().getFullYear() }/>
+  //     </div>
+  //   )
+  // }
+
+  // const container = document.getElementById('root');
+  // const root = ReactDOM.createRoot(container);
+  // root.render(<App />);
+
+  // --------------------------------------------------------------------
+  // <!-- App9.js -->
+  // <!-- React Fragment-->
+
+  // // import React from 'react';
+  // // import ReactDOM from 'react-dom';
+  // // import App from "./App";
+
+  // function AppTwo() {
+  //   return <h1> This is the Second App </h1>
+  // }
+
+  // // ReactDOM.render(
+  // //   <React.Fragment>  {/* Acts as a wrapper but does not add to DOM */}
+  // //     { /*  <App />  */ }
+  // //     <AppTwo />
+  // //   </React.Fragment>,
+  // //   document.getElementById("root")
+  // // );
+
+  // ReactDOM.render(
+  //   <>  {/* Also we can use empty elements */}
+  //     { /*  <App />  */ }
+  //     <AppTwo />
+  //   </>,
+  //   document.getElementById("root")
+  // );
+
+  // // --------------------------------------------------------------------
+  // // <!-- App10.js -->
+  // // <!-- React Conditional Rendering-->
+
+  // // import React from 'react';
+  // // import ReactDOM from 'react-dom';
+
+  // function SecretComponent() {
+  //   return <center><h1> Secret information for authoriesd users only. </h1></center>
+  // }
+  // function RegularComponent() {
+  //   return <h1> Everyone can see this component. </h1>
+  // }
+  // function App(props) {
+
+  //   // if (props.authorized) {
+  //   //   return <SecretComponent />
+  //   // } else {
+  //   //   return <RegularComponent />
+  //   // }
+
+  //   return (
+  //     <>
+  //       { props.authorized ? <SecretComponent /> : <RegularComponent /> }  
+  //     </>
+  //   )
+  // }
+
+  // ReactDOM.render(<App authorized={true}/>, document.getElementById('root'));
+  // // const container = document.getElementById('root');
+  // // const root = ReactDOM.createRoot(container);
+  // // root.render(<App />);
+
+  // // --------------------------------------------------------------------
+  // // <!-- App11.js -->
+  // // <!-- React Array Destructuring-->
+
+  // const checklist = ["boots", "tent", "headlamp"];
+  // console.log(checklist);
+  // console.log(checklist[1]);
+
+  // const [mostImportantItem] = ["boots", "tent", "headlamp"];
+  // console.log(mostImportantItem);
+
+  // const [ , , light] = ["boots", "tent", "headlamp"];
+  // console.log(light);
+
+  // -------------------------------
+  // // import React from 'react';
+  // // import ReactDOM from 'react-dom';
+
+  function SecretComponent() {
+    return <center><h1> Secret information for authoriesd users only. </h1></center>
+  }
+  function RegularComponent() {
+    return <h1> Everyone can see this component. </h1>
+  }
+  function App({ authorized }) {
+
+    // if (props.authorized) {
+    //   return <SecretComponent />
+    // } else {
+    //   return <RegularComponent />
+    // }
+
+    return (
+      <>
+        { authorized ? <SecretComponent /> : <RegularComponent /> }  
+      </>
+    )
+  }
+
+  // ReactDOM.render(<App authorized={true}/>, document.getElementById('root'));
+  const container = document.getElementById('root');
+  const root = ReactDOM.createRoot(container);
+  root.render(<App authorized={true}/>);
+
+  // // --------------------------------------------------------------------
+  // // <!-- App12.js -->
+  // // <!-- React useState Hook-->
+
+  // // import React from 'react';
+  // // import ReactDOM from 'react-dom';
+  // // import React, { useState } from "react";
+
+  // function App() {
+  //   const what = useState();
+  //   console.log(what); // Returns Array with 2 items, i.e. undefined and function
+  //   return (
+  //     <center>
+  //       <h1> Hello </h1>
+  //     </center>
+  //   );
+  // }
+
+  // -------------------------------
+  // function App() {
+  //   const [emotion] = useState("happy");
+  //   console.log(emotion);
+  //   return (
+  //     <center>
+  //       <h1> Current emotion is {emotion}. </h1>
+  //     </center>
+  //   );
+  // }
+
+  // -------------------------------
+  // function App() {
+  //   const [emotion, setEmotion] = useState("happy");
+  //   console.log(emotion);
+  //   return (
+  //     <>
+  //       <center>
+  //         <h1> Current emotion is {emotion}. </h1>
+  //       </center>
+  //       <button onClick={() => setEmotion("frustrated")}>Frustrate</button>
+  //       <button onClick={() => setEmotion("enthusiastic")}>Enthusiastic</button>
+  //       <button onClick={() => setEmotion("happy")}>Happy</button>           
+  //     </>
+  //   );
+  // }
+
+  // const container = document.getElementById('root');
+  // const root = ReactDOM.createRoot(container);
+  // root.render(<App />);
+
+  // // --------------------------------------------------------------------
+  // // <!-- App13.js -->
+  // // <!-- React useEffect Hook-->
+
+  // // import React from 'react';
+  // // import ReactDOM from 'react-dom';
+  // // import React, { useState, useEffect } from "react";
+
+  // function App() {
+  //   const [emotion, setEmotion] = useState("happy");
+
+  //   // useEffect(() => {
+  //   //   console.log(`It's ${emotion} around here!`);
+  //   // });
+
+  //   // useEffect(() => {
+  //   //   console.log(`It's ${emotion} around here!`);
+  //   // }, []); // Dependency array >> props and state will have initial values, Effect is not called after first render(if empty)
+
+  //   useEffect(() => {
+  //     console.log(`It's ${emotion} around here!`);
+  //   }, [emotion]);
+
+  //   return (
+  //     <>
+  //       <center><h1> Current emotion is {emotion}. </h1></center>
+  //       <button onClick={() => setEmotion("frustrated")}>Frustrate</button>
+  //       <button onClick={() => setEmotion("enthusiastic")}>Enthusiastic</button>
+  //       <button onClick={() => setEmotion("happy")}>Happy</button>           
+  //     </>
+  //   );
+  // }
+
+  // -------------------------------
+  // function App() {
+  //   const [emotion, setEmotion] = useState("happy");
+  //   const [secondary, setSecondary] = useState("tired");
+
+  //   useEffect(() => {
+  //     console.log(`It's ${emotion} around here!`);
+  //   }, [emotion]);
+
+  //   useEffect(() => {
+  //     console.log(`It's ${secondary} around here!`);
+  //   }, [secondary]);
+
+  //   return (
+  //     <>
+  //       <center><h1> Current emotion is {emotion} and {secondary}. </h1></center>
+  //       <button onClick={() => setEmotion("frustrated")}>Frustrate</button>
+  //       <button onClick={() => setSecondary("crabby")}>Make Crabby</button>
+  //       <button onClick={() => setEmotion("enthusiastic")}>Enthusiastic</button>
+  //       <button onClick={() => setEmotion("happy")}>Make Happy</button>           
+  //     </>
+  //   );
+  // }
+  // const container = document.getElementById('root');
+  // const root = ReactDOM.createRoot(container);
+  // root.render(<App />);
+
+  // // -------------------------------------------------------------------------
+   
+  // // <!-- App14.js -->
+  // // <!-- React useReducer Hook-->
+
+  // // import React from 'react';
+  // // import ReactDOM from 'react-dom';
+  // // import React, { useState, useEffect } from "react";
+
+  // function App() {
+  //   const [checked, setChecked] = useState(false);
+  //   return (
+  //     <>
+  //       <input type="checkbox" value={checked} onChange={() => setChecked((checked) => !checked)}/>         
+  //       <p>{checked ? "checked" : "not checked"}</p>
+  //     </>
+  //   );
+  // }
+
+  // const container = document.getElementById('root');
+  // const root = ReactDOM.createRoot(container);
+  // root.render(<App />);
+
+  // -------------------------------
+  // function App() {
+  //   const [checked, setChecked] = useState(false);
+
+  //   function toggle() {
+  //     setChecked((checked) => !checked)
+  //   }
+
+  //   return (
+  //     <>
+  //       <input type="checkbox" value={checked} onChange={toggle}/>         
+  //       <p>{checked ? "checked" : "not checked"}</p>
+  //     </>
+  //   );
+  // }
+
+  // -------------------------------
+  // function App() {
+  //   const [checked, toggle] = useReducer(
+  //    (checked) => !checked, false);
+
+  //   return (
+  //     <>
+  //       <input type="checkbox" value={checked} onChange={toggle}/>         
+  //       <p>{checked ? "checked" : "not checked"}</p>
+  //     </>
+  //   );
+  // }
+
+  // const container = document.getElementById('root');
+  // const root = ReactDOM.createRoot(container);
+  // root.render(<App />);
+
+  // // --------------------------------------------------------------------
+  // // <!-- App15.js -->
+  // // <!-- React - Fetching data with Hooks-->
+  // import React, { useState, useEffect } from "react";
+  // import "./App.css";
+
+  // // https://api.github.com/users/eveporcello
+
+  // function App({ login }) {
+  //   const [data, setData] = useState(null);
+
+  //   useEffect(() => {
+  //     fetch(`https://api.github.com/users/${login}`)
+  //       .then((response) => response.json()) 
+  //       .then(setData);
+  //   }, []);
+
+  //   if (data) {
+  //     return <div>{JSON.stringify(data)}</div>;
+  //   }
+  //   return (
+  //     <div>
+  //       No User Available;
+  //     </div>
+  //   );
+  // }
+
+  // const container = document.getElementById('root');
+  // const root = ReactDOM.createRoot(container);
+  // root.render(<App login="eveporcello"/>);
+
+  // // --------------------------------------------------------------------
+  // // <!-- App16.js -->
+  // // <!-- React - Displaying data from an API-->
+  // import React, { useState, useEffect } from "react";
+  // // import "./App.css";
+
+  // // https://api.github.com/users/eveporcello
+  // // https://api.github.com/users/umeshjagtap
+
+  // function App({ login }) {
+  //   const [data, setData] = useState(null);
+
+  //   useEffect(() => {
+  //     fetch(`https://api.github.com/users/${login}`)
+  //       .then((response) => response.json()) 
+  //       .then(setData);
+  //   }, []);
+
+  //   if (data) {
+  //     return (<div>
+  //       <h1>{data.name}</h1></div>);
+  //       <p>{data.location}</p>;
+  //       <img src="{data.avatar_url}" alt="{data.login}" />
+  //   }
+  //   return (
+  //     <div>
+  //       No User Available;
+  //     </div>
+  //   );
+  // }
+
+  // const container = document.getElementById('root');
+  // const root = ReactDOM.createRoot(container);
+  // root.render(<App login="eveporcello"/>);
+
+  // // --------------------------------------------------------------------
+  // // <!-- App17.js -->
+  // // <!-- React - Handling loading states--> //5.3
+  // import React, { useState, useEffect } from "react";
+  // // import "./App.css";
+
+  // // https://api.github.com/users/eveporcello
+
+  // function App({ login }) {
+  //   const [data, setData] = useState(null);
+  //   const [loading, setLoading] = useState(false);
+  //   const [error, setError] = useState(null);
+
+  //   useEffect(() => {
+  //     setLoading(true);
+  //     fetch(`https://api.github.com/users/${login}`)
+  //       .then((response) => response.json()) 
+  //       .then(setData)
+  //       .then(() => setLoading(false))
+  //       .catch(setError);
+  //   }, [login]);
+
+  //   if (loading) return <h1> Loading... </h1>;
+  //   if (error)
+  //     return <pre> {JSON.stringify(error, null, 2)} </pre>;
+
+  //   if (!data) return null;
+
+  //     return (
+  //       <div>
+  //         <h1>{data.name}</h1>
+  //         <p>{data.location}</p>;
+  //         <img src="{data.avatar_url}" alt="{data.login}" />
+  //       </div>
+  //       );
+     
+  //   return (
+  //     <div>
+  //       No User Available;
+  //     </div>
+  //   );
+  // }
+
+  // const container = document.getElementById('root');
+  // const root = ReactDOM.createRoot(container);
+  // root.render(<App login="eveporcello"/>);
+
+  // // --------------------------------------------------------------------
+  // // <!-- App18.js -->
+  // // <!-- React - Using Create React App as a testing platform--> //6.1
+  // // function.test.js
+
+  // Terminal > npm test
+  // App.test.js
+
+  // // --------------------------------------------------------------------
+  // // <!-- App19.js -->
+  // // <!-- React - Testing small functions with Jest --> //6.2
+
+  // // // functions.test.js
+  // import { timesTwo } from "./functions";
+  // test("Multiplies by two", () => {
+  //   expect(timesTwo(4)).toBe(8);
+  // })
+
+  // // // functions.js
+  // export function timesTwo(a) {
+  //   return a * 2;
+  // }
+
+  // // --------------------------------------------------------------------
+  // // <!-- App20.js -->
+  // // <!-- React - Testing small functions with Jest --> //6.3
+
+  // // Create App.test.js
+  // function App() {
+  //   return (
+  //     <div>
+  //       <h1> Hello React Testing Library </h1>   
+  //     </div>
+  //   )
+  // }
+
+  // export default App;
+
+  // // // App.test.js
+  // import {render} from "@testing-library/react";
+  // import react from "react";
+  // import App from "./App"
+
+  // test("renders an h1", () => {
+  //   const { getByText } = render(<App />);
+  //   const h1 = getByText(/Hello React Testing Library/);
+  //   expect(h1).toHaveTextContent("Hello React Testing Library");
+  // });
+
+  // // --------------------------------------------------------------------
+  // // <!-- App21.js -->
+  // // <!-- React - Testing Hooks with React testing library --> //6.4
+
+  // // Checkbox.js
+
+  // import React, {useReducer} from "react"
+
+  // export function Checkbox() {
+  //   const [checked, toggle] = useReducer(
+  //     (checked) => !checked,
+  //     false
+  //   );
+  //   return (
+  //     <>
+  //       <label htmlFor="checkbox">
+  //         {checked ? "checked" : "not checked"}
+  //       </label>
+  //       <input 
+  //         id="checkbox"
+  //         type="checkbox" 
+  //         value={checked} 
+  //         onChange={toggle}
+  //       />
+  //     </>
+  //   );
+  // }
+  // // // Checkbox.test.js
+
+  // import React from "react";
+  // import { render, fireEvent } from "@testing-library/react";
+  // import Checkbox from "./Checkbox";
+  // test("Selecting checkbox", () => {
+  //   // test
+  //   const { getByLabelText } = render(<Checkbox />);
+  //   const checkbox = getByLabelText(/ not checked /);
+  //   fireEvent.click(checkbox);
+  //   expect(checkbox.checked).toEqual(true);
+  // });
+
+  // // --------------------------------------------------------------------
+  // // <!-- App22.js -->
+  // // <!-- React - Configuring the router --> // 7.2
+
+  // npm install react-router@next react-router-dom@next
+
+  // // pages.js
+  // import React from "react";
+
+  // export function Home() {
+  //   return (
+  //     <div>
+  //       <h1> [Company Website] </h1>   
+  //     </div>
+  //   )
+  // }
+
+  // export function About() {
+  //   return (
+  //     <div>
+  //       <h1> [About] </h1>   
+  //     </div>
+  //   )
+  // }
+
+  // export function Events() {
+  //   return (
+  //     <div>
+  //       <h1> [Events] </h1>   
+  //     </div>
+  //   )
+  // }
+
+  // export function Contact() {
+  //   return (
+  //     <div>
+  //       <h1> [Contact] </h1>   
+  //     </div>
+  //   )
+  // }
+
+  // // index.js
+  // import React from "react";
+  // import ReactDOM from "react-dom";
+  // import "./index.css";
+  // import App from "./App";
+  // import { BrowserRouter as Router } from "react-router-dom";
+
+  // ReactDOM.render(
+  //   <Router>
+  //     <App login="eveporcello" />
+  //   </Router>,
+  //   document.getElementById("root");
+  // );
+
+  // // App.js
+  // import React from "react";
+  // import "./App.css";
+  // import { Routes , Route } from "react-router-dom";
+  // import { Home, About, Events, Contact } from "./pages"
+
+  // function App() {
+  //   return (
+  //     <div>
+  //       <Routes>
+  //         <Route path="/" element={<Home />} />
+  //         <Route path="/about" element={<About />}/>
+  //         <Route path="/events" element={<Events />}/>
+  //         <Route path="/contact" element={<Contact />}/>
+  //       </Routes>
+  //       <h1>Hello React Testing Library</h1>
+  //     </div>
+  //   );
+  // }
+  // export default App;
+
+  // npm install history
+
+  // // --------------------------------------------------------------------
+  // // <!-- App23.js -->
+  // // <!-- React - Incorporating the link component--> // 7.3
+
+  // // npm install react-router@next react-router-dom@next
+
+  // // pages.js
+  // import React from "react";
+  // import { Link, useLocation } from "react-router-dom";
+
+  // export function Home() {
+  //   return (
+  //     <div>
+  //       <h1> [Company Website] </h1>   
+  //       <nav>
+  //         <Link to="about"> About </Link>  
+  //         <Link to="events"> Events </Link>  
+  //         <Link to="contact"> Contact </Link>  
+  //       </nav>
+  //     </div>
+  //   )
+  // }
+
+  // export function About() {
+  //   return (
+  //     <div>
+  //       <h1> [About] </h1>   
+  //     </div>
+  //   )
+  // }
+
+  // export function Events() {
+  //   return (
+  //     <div>
+  //       <h1> [Events] </h1>   
+  //     </div>
+  //   )
+  // }
+
+  // export function Contact() {
+  //   return (
+  //     <div>
+  //       <h1> [Contact] </h1>   
+  //     </div>
+  //   )
+  // }
+
+  // export function Whoops404() {
+  //   let location = useLocation();
+  //   // conssole.log(location);
+  //   return (
+  //     <div>
+  //       { /* <h1>This page does not exist !</h1> */}
+  //       <h1>Resource not found at {location.pathname}!</h1>
+  //     </div>
+  //   )
+  // }
+
+  // // index.js
+  // import React from "react";
+  // import ReactDOM from "react-dom";
+  // import "./index.css";
+  // import App from "./App";
+  // import { BrowserRouter as Router } from "react-router-dom";
+
+  // ReactDOM.render(
+  //   <Router>
+  //     <App login="eveporcello" />
+  //   </Router>,
+  //   document.getElementById("root");
+  // );
+
+  // // App.js
+  // import React from "react";
+  // import "./App.css";
+  // import { Routes , Route } from "react-router-dom";
+  // import { Home, About, Events, Contact, Whoops404 } from "./pages"
+
+  // function App() {
+  //   return (
+  //     <div>
+  //       <Routes>
+  //         <Route path="/" element={<Home />} />
+  //         <Route path="/about" element={<About />}/>
+  //         <Route path="/events" element={<Events />}/>
+  //         <Route path="/contact" element={<Contact />}/>
+  //         <Route path="*" element={<Whoops404 />}/>
+  //       </Routes>
+  //       <h1>Hello React Testing Library</h1>
+  //     </div>
+  //   );
+  // }
+  // export default App;
+
+  // npm install history
+
+
+  // // --------------------------------------------------------------------
+  // // <!-- App24.js -->
+  // // <!-- React - Nesting links with React Router 6 --> // 7.3
+
+  // npm install react-router@next react-router-dom@next
+
+  // pages.js
+  // import React from "react";
+  // import { Link, useLocation, Outlet} from "react-router-dom";
+
+  // export function Home() {
+  //   return (
+  //     <div>
+  //       <h1> [Company Website] </h1>   
+  //       <nav>
+  //         <Link to="about"> About </Link>  
+  //         <Link to="events"> Events </Link>  
+  //         <Link to="contact"> Contact </Link>  
+  //       </nav>
+  //     </div>
+  //   )
+  // }
+
+  // export function About() { // Parent Element
+  //   return (
+  //     <div>
+  //       <h1> [About] </h1>   
+  //       <Outlet/>
+  //     </div>
+  //   )
+  // }
+
+  // export function Services() {
+  //   return (
+  //     <div>
+  //       <h2>Our Services</h2>   
+  //     </div>
+  //   );
+  // }
+
+  // export function CompanyHistory() {
+  //   return (
+  //     <div>
+  //       <h2>Our Company History</h2>   
+  //     </div>
+  //   );
+  // }
+  
+  // export function Location() {
+  //   return (
+  //     <div>
+  //       <h2>Our Location</h2>   
+  //     </div>
+  //   );
+  // }
+
+  // export function Events() {
+  //   return (
+  //     <div>
+  //       <h1> [Events] </h1>   
+  //     </div>
+  //   )
+  // }
+
+  // export function Contact() {
+  //   return (
+  //     <div>
+  //       <h1> [Contact] </h1>   
+  //     </div>
+  //   )
+  // }
+
+  // export function Whoops404() {
+  //   let location = useLocation();
+  //   // conssole.log(location);
+  //   return (
+  //     <div>
+  //       { /* <h1>This page does not exist !</h1> */}
+  //       <h1>Resource not found at {location.pathname}!</h1>
+  //     </div>
+  //   )
+  // }
+
+  // // index.js
+  // import React from "react";
+  // import ReactDOM from "react-dom";
+  // import "./index.css";
+  // import App from "./App";
+  // import { BrowserRouter as Router } from "react-router-dom";
+
+  // ReactDOM.render(
+  //   <Router>
+  //     <App login="eveporcello" />
+  //   </Router>,
+  //   document.getElementById("root");
+  // );
+
+  // // App.js
+  // import React from "react";
+  // import "./App.css";
+  // import { Routes , Route } from "react-router-dom";
+  // import { Home, About, Events, Contact, Whoops404, Services, CompanyHistory, Location } from "./pages"
+
+  // function App() {
+  //   return (
+  //     <div>
+  //       <Routes>
+  //         <Route path="/" element={<Home />} />
+  //         <Route path="/about" element={<About />} />
+  //           <Route path="services" element={<Services />} />
+  //           <Route path="history" element={<CompanyHistory />} />
+  //         <Route path="/events" element={<Events />}/>
+  //         <Route path="/contact" element={<Contact />}/>
+  //         <Route path="*" element={<Whoops404 />}/>
+  //       </Routes>
+  //       <h1>Hello React Testing Library</h1>
+  //     </div>
+  //   );
+  // }
+  // export default App;
+   
+</script>
+</body>
+</html>
