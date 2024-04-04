@@ -1,0 +1,104 @@
+.App {
+  /* text-align: center; */
+  color: black;
+}
+
+.App-logo {
+  height: 8vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tjTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #282c34;
+  color: white;
+}
+.tjDescription {
+  font-family: 'Courier New', Courier, monospace;
+  margin: 1rem auto;
+  color: white;
+  background-color: red;
+  width: 80%;
+  border-radius: 20px;
+  /* padding: 0.1rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.tjDescription img {
+  height: 2.7rem;
+  width: 2.7rem;
+  border-radius: 10rem;
+}
+.tjFooter {
+  text-align: center;
+  margin: 1rem auto;
+  color: black;
+  background-color: yellow;
+  width: 90%;
+  border-radius: 20px;
+  padding: 0.5rem;
+}
+.event {
+  display: flex;
+  background-color: rgb(217, 241, 217);
+  border-radius: 0.8rem;
+  margin: 0.3rem;
+}
+.event-title {
+  background-color: #282c34;
+  padding: 0.1rem;
+  color: white;
+}
+.event-dates {
+  display: flex;
+  justify-content: space-evenly;
+}
+.event img {
+  width: 15rem;
+  height: 12rem;
+  padding: 1rem;
+  border-radius: 3rem;
+  /* filter: drop-shadow(5px 5px 5px yellow); */
+}
+.location {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 0.8rem;
+  padding-top: 0.9rem;
+}
