@@ -1,0 +1,16 @@
+// 2. Markdown version of Apple Notes cloneElement
+
+Using localStorage
+localStorage.getItem("key")
+localStorage.setItem("key", value)
+
+Note: value must be a string,
+so if you have a more complex value like an array or object to save,
+you'll need to use:
+JSON.stringify(value)
+JSON.parse(stringifiedValue)
+
+https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+
+https://cssanimation.rocks/animating-links/
+https://ui.aceternity.com/
