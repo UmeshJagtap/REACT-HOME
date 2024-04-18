@@ -13,11 +13,33 @@ import { nanoid } from 'nanoid';
  * to fully understand everything to move on)
  */
 
+/**
+ * Challenge:
+ * 1. Every time the `notes` array changes, save it
+ *    in localStorage. You'll need to use JSON.stringify()
+ *    to turn the array into a string to save in localStorage.
+ * 2. When the app first loads, initialize the notes state
+ *    with the notes saved in localStorage. You'll need to
+ *    use JSON.parse() to turn the stringified array back
+ *    into a real JS array.
+ */
+
 export default function App() {
-  const [notes, setNotes] = React.useState([]);
+  const [notes, setNotes] = React.useState(
+    () => JSON.parse(localStorage.getItem('notes')) || []
+  );
   const [currentNoteId, setCurrentNoteId] = React.useState(
     (notes[0] && notes[0].id) || ''
   );
+  // const [state, setState] = React.useState(() =>
+  //   console.log('State initialization')
+  // );
+
+  React.useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes));
+    // console.log(JSON.stringify(notes[0].body))
+    console.log(notes[0].body.split('/n')[0]);
+  }, [notes]);
 
   function createNewNote() {
     const newNote = {
