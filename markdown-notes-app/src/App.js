@@ -24,6 +24,11 @@ import { nanoid } from 'nanoid';
  *    into a real JS array.
  */
 
+/**
+ * Challenge: When the user edits a note, reposition
+ * it in the list of notes to the top of the list
+ */
+
 export default function App() {
   const [notes, setNotes] = React.useState(
     () => JSON.parse(localStorage.getItem('notes')) || []
@@ -51,14 +56,62 @@ export default function App() {
   }
 
   function updateNote(text) {
-    setNotes((oldNotes) =>
-      oldNotes.map((oldNote) => {
-        return oldNote.id === currentNoteId
-          ? { ...oldNote, body: text }
-          : oldNote;
-      })
-    );
+    // Try to rearrange the most recently-modified note to be at the top
+    setNotes((oldNotes) => {
+      const newArray = [];
+      for (let i = 0; i < oldNotes.length; i++) {
+        const oldNote = oldNotes[i];
+        if (oldNote.id === currentNoteId) {
+          newArray.unshift({ ...oldNote, body: text });
+        } else {
+          newArray.push(oldNote);
+        }
+      }
+      return newArray;
+    });
   }
+
+  // Detailed explanation !!
+  // function updateNote(text) {
+  //   // Try to rearrange the most recently-modified
+  //   // note to be at the top
+  //   setNotes((oldNotes) => {
+  //     // Create a new empty array
+  //     // Loop over the original array
+  //     //   if the id matches
+  //     //     put the updated note at the
+  //     //     beginning of the new array
+  //     //   else
+  //     //     push the old note to the end
+  //     //     of the new array
+  //     // return the new array
+  //     const newArray = [];
+  //     for (let i = 0; i < oldNotes.length; i++) {
+  //       const oldNote = oldNotes[i];
+  //       if (oldNote.id === currentNoteId) {
+  //         newArray.unshift({ ...oldNote, body: text });
+  //       } else {
+  //         newArray.push(oldNote);
+  //       }
+  //     }
+  //     // for (let i = 0; i < oldNotes.length; i++) {
+  //     //   if (oldNotes[i].id === currentNoteId) {
+  //     //     newArray.unshift({ ...oldNotes[i], body: text });
+  //     //   } else {
+  //     //     newArray.push(oldNotes[i]);
+  //     //   }
+  //     // }
+  //     return newArray;
+  //   });
+  //   // This does not rearrange the notes
+  //   // setNotes((oldNotes) =>
+  //   //   oldNotes.map((oldNote) => {
+  //   //     return oldNote.id === currentNoteId
+  //   //       ? { ...oldNote, body: text }
+  //   //       : oldNote;
+  //   //   })
+  //   // );
+  // }
 
   function findCurrentNote() {
     return (
