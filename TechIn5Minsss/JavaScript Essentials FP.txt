@@ -1,0 +1,971 @@
+------------------------------------------TRY IT OUT
+// Try-it-out - Generate random characters
+// Try-it-out - Simple Calculator
+
+DOM Manipulation 
+// Try-it-out - DOM - User Registration Details
+// Try-it-out - DOM - Create Drop Down Country Field
+
+REFS -----
+https://play.fresco.me/course/51/progress/topic/42/content/0
+https://codepen.io/tag/frescoplay
+
+=========================================================================
+RANDOM CHARS
+=========================================================================
+Try-it-out - Generate random characters
+
+<html>
+
+<body>
+    <div>
+        Enter the length of character:
+        <input type='text' id="num">
+        <button onclick="stringGen()">submit</button>
+        <p id="result"></p>
+    </div>
+    <script type="text/javascript" src="index.js"></SCRIPT>
+</body>
+
+</html>
+
+
+function getRandomChars(len)
+{
+// write your code here
+let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  let count = 0;
+  while(count < len) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    count += 1;
+  }
+  console.log(result);
+  return result;
+
+}
+
+// var len = 5;
+function stringGen() {
+  var len = document.getElementById("num").value;
+  console.log(len);
+  var results = getRandomChars(len);
+  document.getElementById("result").innerHTML = results;
+}
+
+------------------------------------+++ (WORKED)
+function stringGen() {
+  var text = "";
+  var len = document.getElementById("num").value;
+  var char_list = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  for (var i = 0; i < len; i++) {
+    text += char_list.charAt(Math.floor(Math.random() * char_list.length));
+  }
+  document.getElementById("result").innerHTML = text;
+  return text;
+}
+
+--------------------------------------------+++
+
+=========================================================================
+CALCULATOR
+=========================================================================
+
+Try-it-out - Simple Calculator
+Create a Full-stack program that acts as a simple printing calculator. The program should allow the user to perform addition, subtraction, multiplication & division.
+In Javascript file write an ``update`` function which should display the value on the screen,  ``result`` function should evaluate the values present in the screen and display the result. 
+``form_reset`` function to clear the screen and reset the calculator.  
+
+Note: Please use only the element "screen" for all manipulations instead of using variables.
+
+<HEAD>
+    <TITLE> Simple Calculation</TITLE>
+
+</HEAD>
+
+<BODY>
+    <FORM NAME="myForm">
+        <TABLE BORDER=2>
+            <TR>
+                <TD align="center">
+                    <INPUT TYPE="text" ID="screen" NAME="screen" style="width:99%"><br>
+                </TD>
+            </TR>
+            <TR>
+                <TD>
+                    <INPUT TYPE="button" NAME="7" VALUE="  7  " onclick="update(7)">
+                    <INPUT TYPE="button" NAME="8" VALUE="  8  " onclick="update(8)">
+                    <INPUT TYPE="button" NAME="9" VALUE="  9  " onclick="update(9)">
+                    <INPUT TYPE="button" NAME="+" VALUE="  +  " onclick="update('+')">
+                    <br>
+                    <INPUT TYPE="button" NAME="4" VALUE="  4  " onclick="update(4)">
+                    <INPUT TYPE="button" NAME="5" VALUE="  5  " onclick="update(5)">
+                    <INPUT TYPE="button" NAME="6" VALUE="  6  " onclick="update(6)">
+                    <INPUT TYPE="button" NAME="-" VALUE="  -  " onclick="update('-')">
+                    <br>
+                    <INPUT TYPE="button" NAME="1" VALUE="  1  " onclick="update(1)">
+                    <INPUT TYPE="button" NAME="2" VALUE="  2  " onclick="update(2)">
+                    <INPUT TYPE="button" NAME="3" VALUE="  3  " onclick="update(3)">
+                    <INPUT TYPE="button" NAME="*" VALUE="  x  " onclick="update('*')">
+                    <br>
+                    <INPUT TYPE="button" NAME="c" VALUE="  c  " onclick="form_reset();">
+                    <INPUT TYPE="button" NAME="0" VALUE="  0  " onclick="update(0)">
+                    <INPUT TYPE="button" NAME="=" VALUE="  =  " onclick="result();">
+                    <INPUT TYPE="button" NAME="/" VALUE="  /  " onclick="update('/')">
+                </TD>
+            </TR>
+        </TABLE>
+    </FORM>
+    <script type="text/javascript" src="index.js"></SCRIPT>
+</BODY>
+
+</HTML>
+
+var nums = [1,2,3,4,5,6,7,8,9,0];
+var oprns = ['+','-','*','/'];
+//var num1 = "", oprn = "", num2 = "";
+var exprn = "";
+
+function update(value) {
+
+    if (oprns.includes(value) || nums.includes(value)) {
+        exprn = exprn + value;
+    }
+
+document.getElementById('screen').innerHTML = exprn;
+console.log(exprn);
+}
+
+function result(oprnResult) {
+    var oprnResult = 0;
+    oprnResult = eval(exprn);
+    console.log("Result " + oprnResult);
+    document.getElementById('screen').innerHTML = parseInt(oprnResult);    
+}
+
+function form_reset() {
+    var clear = 0;
+    console.log("Clear " + clear);
+    exprn = "";
+    document.getElementById('screen').innerHTML = clear;
+}
+
+    // if (nums.includes(value)) {
+    //     num1 = num1 + value;
+    // }
+
+    // else if (oprns.includes(value)) {
+    //         oprn = value;
+    //         //updateNum2();    
+    // }
+
+    // else {
+    //     num2 = num2 + value;
+    // }
+
+// console.log("Num1 " + num1);
+// console.log("Oprn " + oprn);
+// console.log("Num2 " + num2);
+
+-----------------------------------------------------+++ (WORKED)
+
+TRY 2 -Calculator
+
+>> Retry
+index.html
+<HEAD>
+    <TITLE> Simple Calculation</TITLE>
+
+</HEAD>
+
+<BODY>
+    <FORM NAME="myForm">
+        <TABLE BORDER=2>
+            <TR>
+                <TD align="center">
+                    <INPUT TYPE="text" ID="screen" NAME="screen" style="width:99%"><br>
+                </TD>
+            </TR>
+            <TR>
+                <TD>
+                    <INPUT TYPE="button" NAME="7" VALUE="  7  " onclick="update(7)">
+                    <INPUT TYPE="button" NAME="8" VALUE="  8  " onclick="update(8)">
+                    <INPUT TYPE="button" NAME="9" VALUE="  9  " onclick="update(9)">
+                    <INPUT TYPE="button" NAME="+" VALUE="  +  " onclick="update('+')">
+                    <br>
+                    <INPUT TYPE="button" NAME="4" VALUE="  4  " onclick="update(4)">
+                    <INPUT TYPE="button" NAME="5" VALUE="  5  " onclick="update(5)">
+                    <INPUT TYPE="button" NAME="6" VALUE="  6  " onclick="update(6)">
+                    <INPUT TYPE="button" NAME="-" VALUE="  -  " onclick="update('-')">
+                    <br>
+                    <INPUT TYPE="button" NAME="1" VALUE="  1  " onclick="update(1)">
+                    <INPUT TYPE="button" NAME="2" VALUE="  2  " onclick="update(2)">
+                    <INPUT TYPE="button" NAME="3" VALUE="  3  " onclick="update(3)">
+                    <INPUT TYPE="button" NAME="*" VALUE="  x  " onclick="update('*')">
+                    <br>
+                    <INPUT TYPE="button" NAME="c" VALUE="  c  " onclick="form_reset();">
+                    <INPUT TYPE="button" NAME="0" VALUE="  0  " onclick="update(0)">
+                    <INPUT TYPE="button" NAME="=" VALUE="  =  " onclick="result();">
+                    <INPUT TYPE="button" NAME="/" VALUE="  /  " onclick="update('/')">
+                </TD>
+            </TR>
+        </TABLE>
+    </FORM>
+    <script type="text/javascript" src="index.js"></SCRIPT>
+</BODY>
+
+</HTML>
+
+index.js
+function update(value) {
+  // write your code here
+  document.getElementById("screen").value += value;
+}
+
+function result() {
+  // write your code here
+  res = eval(document.getElementById("screen").value);
+  document.getElementById("screen").value = res;
+}
+
+function form_reset() {
+  // write your code here
+  document.getElementById("screen").value = "";
+}
+-------------------------------------------------------+++
+
+=========================================================================
+FIBONACCI
+=========================================================================
+
+// Fibonacci series
+// 0,1,1,2,3,5,8,13,21,34
+function fibo(n=10) {
+  let a=0,b=1,c;
+  for (i=0; i<n-2; i++) {
+    c = a+b;
+    a = b;
+    b = c;
+  }
+  return c;
+  
+}
+fib = fibo();
+console.log(fib);
+// a,b,c = 0 1 1
+// a,b,c = 1 1 2
+// a,b,c = 1 2 3
+// a,b,c = 2 3 5
+// a,b,c = 3 5 8
+// a,b,c = 5 8 13
+// a,b,c = 8 13 21
+
+------------------------------------+++ (WORKED)
+function fibseq(n=10) {
+  let fibseqn = [0,1];
+  let a=0,b=1,c;
+  for(i=0; i<n-2; i++) {
+      c = a + b;
+      a = b;
+      b = c;
+      fibseqn.push(c);
+  }
+  
+  return fibseqn;
+}
+// [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+fibsn = fibseq()
+console.log(fibsn);
+----------------------------------------------+++
+
+=========================================================================
+DOM - User Registration Details (worked)
+=========================================================================
+Write a JavaScript program to read user registration details like 'Name', 'Phone', 'Country' and  'Email id'.
+Display the details in an alert box.
+Fresco,9999999999,India,fresco@tcs.com
+// index.html
+<HTML>
+<HEAD>
+    <TITLE> Registration Details</TITLE>
+ <script type="text/javascript" src="index.js"></script>
+</HEAD>
+
+<BODY>
+<div>
+Name<input type="text" id="myname"><br>
+Phone<input type="text" id="myphone"><br>
+Country  <input type="text" id="mycontry"><br>
+Email id<input type="text" id="mymail"><br>
+<button onclick="myFunction()">Try it</button>
+</div>
+   
+</BODY>
+
+</HTML>
+
+// index.js
+function myFunction() {
+  let myname = document.getElementById("myname").value;
+  let myphone = document.getElementById("myphone").value;
+  let mycontry = document.getElementById("mycontry").value;
+  let mymail = document.getElementById("mymail").value;
+  alert(myname+","+myphone+","+mycontry+","+mymail); 
+}
+
+=========================================================================
+DOM - Create Drop Down Country Field (worked)
+=========================================================================
+
+ <!-- - Open index.html file, user registration form has a drop-down field Country:.
+ - Write code by using JavaScript to add a new country to the list. -->
+
+<HEAD>
+    <TITLE> Country field</TITLE>
+</HEAD>
+
+<BODY>
+        Country:
+        <SELECT NAME="list" ID="list">
+	<OPTION>India</OPTION>
+  	<OPTION>China</OPTION>
+	</SELECT>
+        <input type="text" id="txtbox">
+        <INPUT TYPE="button" NAME="button" VALUE="Add New" onClick="runList()" />
+        <script type="text/javascript" src="index.js"></SCRIPT>
+</BODY>
+<SCRIPT>
+function runList() {
+        // write your code here
+        let txtboxVal = document.getElementById("txtbox").value;
+        let list = document.getElementById("list");
+
+        var option = document.createElement("option");
+        option.text = txtboxVal;
+        list.add(option);
+}
+</SCRIPT>
+</HTML>
+
+
+----------------------------------------------+++
+
+
+// Function as argument   -------------<<
+
+var f = function()
+{   console.log("Hello");
+};
+var g = function()
+{   console.log("All");
+}
+var executor = function(fn)
+{  fn();
+}
+executor(g);
+
+
+// Function as property    -------------<<
+// i.e. Object property
+
+var myObj = {
+ "testProp" : true
+};
+myObj.prop1 = function() {
+ console.log ("Function in object");
+};
+myObj.prop1();
+
+
+// Constructor function -------------<<
+
+function Car(make, model, year) {
+   this.make = make;
+   this.model = model;
+   this.year = year;
+}
+
+var car1 = new Car('Honda', 'Civic', 2006)
+
+var car4 = new Car('Jeep', 'Cherokee', 2015)
+car4.fourWheelDrive = true;
+car4.['bumperStikers'] = false;
+car4;
+{ make:'Jeep', model:'Cherokee', year:2015, fourWheelDrive: true, bumperStikers: flase }
+
+	- - - 
+function Animal(name, foodType, kingOfJungle) {
+   this.name = name;
+   this.foodType = foodType;
+   kingOfTheJungle = kingOfTheJungle;
+}
+
+var animal1 = new Animal('Snoopy', 'carnivore', flase);
+var animal2 = new Animal('Garfield', 'lasagne', true);
+	- - -
+
+
+// For Each -------------<<
+
+var myArray = [10, 20, "Hello", {}];
+var myFunction = function(item) {
+   console.log("For an element " + item);
+};
+myArray.forEach(myFunction);
+
+myArray.forEach(function (item, index, array) {
+   console.log(item, index);
+});
+
+
+
+// Scope -------------<<
+
+Scope refers to the part of the program in which a variable can be accessed.
+JavaScript has two types of scopes: Local and Global.
+Variables with global scope can be accessed anywhere in the program, and the variables with a local scope can be accessed within the block or function within which they are declared.
+
+Example Here name1 is a global variable and name2 is a local variable
+var name1 = "ben";
+myFunction();
+function myFunction() {
+var name2 = "bob";
+   console.log(name1);
+    console.log(name2);
+    }
+  console.log(name2);
+Console :-
+ben
+bob
+Uncaught ReferenceError: name2 is not defined
+
+
+// Closure -----------<<
+
+A Closure is nothing but a function inside another function.
+This closure function can access the variables inside its own scope, the outer function's variables and the global variables.
+
+var myClosure = (function () {
+    var i = 0;
+    return function () {return i += 1;}
+})();
+myClosure();//i=1
+myClosure();//i=2
+myClosure();//i=3
+
+
+// DOM ---------------<<
+
+1) You can create HTML elements using Javascript. Consider the following HTML code
+
+<body>
+<p>Some text</p>
+</body>
+
+Now you need to create a <p> tag inside <body> using Javascript. How can you do that? Take a look at the following code snippet.
+
+var myParagraph = document.createElement("p");    // Create a <p> element
+var myText = document.createTextNode("text added using JS"); 
+// Create a text node that has the text for <p>
+myParagraph.appendChild(myText);   // Append the text to <p>
+document.body.appendChild(myParagraph); // Append <p> to <body>
+
+2) Removing HTML elements using DOM
+
+<div id="text">
+	<p>This is a text.</p>
+	<p id="p1">This is a text which will get removed!</p>
+</div>
+<script>
+	var parent = document.getElementById("text");
+	var child = document.getElementById("p1");
+
+	parent.removeChild(child);
+</script>
+
+
+// Javascript and HTML user interaction  ---------------<<
+
+<script>
+	function doSomething() {
+		alert("Button");
+	}
+</script>
+<body>
+	<input type="button" id="hello" value="Button #1" onclick="alert("Button1");" />
+	<input type="button" id="hello" value="Button #2" onclick="doSomething()" />
+</body>
+
+
+// Events and Event Listners ---------------<<
+
+1) 
+Listnening for events involves using the addEventListner function:
+	source.addEventListner(eventName, eventHandler, true);
+Common event names you frequently us are
+click, mousemove, mouseover, mouseout, dblclick, DOMContentLoaded, load, keydown, keyup, scroll,
+wheel & DOMMouseScroll, and many more!
+
+<script>
+	document.addEventListner("click", changeColor, true);
+	function changeColor() {
+		document.body.style.background = '#FFC926';
+	}
+</script>
+
+2)
+The Event Argument
+	An event carries with it some useful information, and that information is passed
+in to the event listner (aka handler) via an argument:
+
+function myEventHandler(e) {
+	// event handlery stuff
+}
+
+3) 
+Onclick Event
+<html>
+<head>
+    <style>
+    #blog { display: flex; justify-content: center; align-items: center; }
+    #content {  width: 400px; max-height: 270px; overflow: hidden; }
+    #content.open {  max-height: 1000px; }
+    #show-more {  background-color: blue; color: aliceblue; padding: 3px; display: flex; justify-content: center; align-items: center; }
+    </style>
+</head>
+
+<body>
+    <div id="blog">
+        <div id="content">
+            <p>Lorem ipsum dolor sit amet. Et labore quia id impedit culpa qui explicabo quibusdam qui veritatis dolorem sit sint rerum. Et internos optio rem quidem consequatur ut aperiam beatae qui cumque distinctio! Sit quod voluptatem ea perspiciatis consequuntur et laudantium quod aut adipisci corporis. Cum exercitationem quisquam est dolores perspiciatis et accusantium distinctio hic maxime dolores! </p><p>Rem veritatis molestiae qui quia ullam et laboriosam sunt qui voluptatem iusto et quisquam accusantium sit beatae sint et totam quis. Est animi voluptate et molestiae soluta et veniam labore qui vero voluptas. Ad eveniet facilis At voluptatibus omnis in consequatur blanditiis. Sed officia animi est deserunt sapiente qui minima suscipit et eius magni ut voluptatibus fugiat et deserunt magni. </p><p>Ut harum nihil non dolor accusamus et saepe temporibus. Aut optio voluptate vel suscipit blanditiis et sint numquam ea deleniti illum. In accusamus pariatur ut doloribus quaerat aut quas fugit ut doloremque suscipit sed eaque dolorum in molestias enim. Aut animi Quis non enim totam et tenetur maxime. </p>
+        </div>
+        
+    </div>
+    <a id="show-more">Show More</a>
+</body>
+<script>
+    var content = document.getElementById("content");
+    var button = document.getElementById("show-more");
+    button.onclick = function() {
+        if(content.className == "open"){
+            //shrink the box
+            content.className = "";
+            button.innerHTML = "Show More";
+            
+        } else{
+            //expand the box
+            content.className = "open";	
+            button.innerHTML = "Show Less";
+        }
+    }
+</script>
+</html>
+
+4)
+Onload Event  -The browser has finished loading the page
+
+<html>
+<h1>Welcome To JavaScript Tutorial</h1><br><br>
+<body onload="myOnloadFunction()">
+    <p id="mydemo">JavaScript OnLoad Event Demo</p>
+</body><br><br>
+<h2>Happy Java Script Learning</h2><br><br>
+<script>
+    function myOnloadFunction() {
+	alert("Loading the HTML Web Page finished");
+    }
+</script>
+</html>
+
+5)
+Onblur and Onfocus Event
+
+<!DOCTYPE Html>
+<html>
+<head>
+<title>DOM</title>
+<style>
+	input{padding: 5em; text-align: center; font-size: 0.9em}
+</style>
+</head>
+<body>
+	<div id="form">
+		<input type="text" placeholder="Name">
+		<input type="password" placeholder="Password">
+	</div>
+</body>
+<script>
+	let form = document.getElementById("form");
+	form.addEventListner("focus",function(event){
+	// event target
+	// console.log(event.target);
+	event.target.style.background = "";
+}, true);
+</script>
+</html>
+
+Try-it-out
+Using JavaScript, validate the 'phone' field of the User Registration page. When the user enters anything other than 10 digit number and tabs away, JavaScript has to return an alert to enter a valid number.
+
+
+What is AJAX?     ---------------<<
+
+	AJAX stands for Asynchronous Javascript and XML
+	AJAX uses Javascript to send and receive data without a page refresh
+	AJAX is a technology, it's not a programming language
+
+-'asynchronous' means we can load the content without having to refresh
+-data can be text, html or json.
+
+|  COMP/CLIENT  |  ----- GET /index.php --------> |  SERVER  |
+|               |  <---WebPage---HTTP/1.1.200---- |          |
+Data recived as Content-Type: text/html  <html><body>
+
+|  0 =======    |  ----- GET /game-list.php (Ajax Request) ------> |  SERVER  |
+|  o +++++++    |  <---------- (Ajax Response) HTTP/1.1.200 ------ |          |
+Data recived as Content-Type: text/html
+
+
+XMLHttpRequest Object
+
+// Create an instance of the HTTP request object
+var xmlHttp = new XMLHttpRequest();
+
+// Specify HTTP GET by default and supply the relative url
+xmlHttp.open("GET", "game-list.php", false);
+
+// Start a synchronous AJAX request and wait for the response
+xmlHttp.send(null);
+
+var element = document.getElementById("content");
+
+// Use the HTML returned from the server to create
+element.innerHTML = xmlHttp.responseText;
+
+DOM >> 
+
+Document >> (property) title
+Document >> (root element) <html>
+         |->> (element) <head> -> (element) <title> -> (property) innerHTML
+         |->> (element) <body> -> (element) <div id="content"> -> (property) innerHTML
+                               -> (element) <h1>
+
+element = document.getElementById("content");
+element.innerHTML = "responseText";
+
+
+game-list.php
+<ul>
+<li>Super Mario</li>
+<li>Roadrash</li>
+<li>GTA ViceCity</li>
+<li>Contra</li>
+</ul>
+
+index.php
+<script type="text/javascript>
+	function getcontent() {
+		// creting an instance of the HTTP request object
+		var xmlHttp = new XMLHttpRequest();
+		
+		// specify the method and the url
+		xmlHttp.open("GET", "game-list.php", false);
+		xmlHttp.send(null);
+		
+		//xmlHttp.responseText = game-list.php
+		var element = document.getElementById("content");
+		element.innerHTML = xmlHttp.responseText;
+	}
+	function hidecontent() {
+		var element = document.getElementById("content");
+		element.innerHTML = "";	
+	}
+</script>
+<form>
+	<input onclick="getcontent();" type="button" value="get content" />
+	<input onclick="hidecontent();" type="button" value="hide content" />
+</form>
+<div id="content"></div>
+
+
+XHR Request    ---------------<<
+
+XMLHttpRequest is an object that is used by all modern browsers to communicate with the server.
+This object is commonly used in AJAX programming.
+You can also update only a part of a web page using this object.
+It helps in making synchronous and asynchronous calls to the server and retrieving data without a full page reload.
+
+Example
+
+var request= new XMLHttpRequest();
+request.open('GET','Example.txt',false);
+request.send();
+if(request.readyState == 4 && request.status == 200){
+console.log(request);
+document.writeln(request.responseText);
+}
+document.writeln("some text");
+
+In this code, since we passed false as a parameter to open() function 
+the browser treats this as synchronous calls and 
+wait for the server to respond and then execute the next line.
+
+
+Making asynchronous request    ---------------<<
+
+AJAX Requests
+> Communicate with a server by making a http request
+> No need to reload the page
+> Stands for: Asynchronous JavaScript And XML
+
+index.html -<<----<
+<!DOCTYPE Html>
+<html>
+<head>
+	<title>Async JavaScript :-)</title>
+	<script src="https://code.jquery.com/jquery-1.22.3.min.js"></script>
+	<style>
+		input{padding: 5em; text-align: center; font-size: 0.9em}
+	</style>
+</head>
+<body>
+	<div id="f">
+		
+	</div>
+</body>
+<script src="async.js"></script>
+</html>
+
+tweets.json -<<----<
+{
+  "tweets": {
+    {
+	"content" : "hello"
+    },
+    {
+        "content" : "world"
+    }
+  }
+}
+
+/* READY STATES 
+
+0 - request not initialised 
+1 - request has been set up
+2 - request has been sent
+3 - request is in progress
+4 - request is complete
+
+*/
+
+async.js -<<----<
+window.onload = function(){
+
+	var http = new XMLHttpRequest();
+
+	http.onreadystatechange = function(){
+            //console.log(http);
+	    if(http.readystate == 4 && http.status == 200){
+		console.log(JSON.parse(http.response));
+		
+            }
+        };
+
+	http.open("GET", "data/tweets.json", true);  [true ->> async] 
+			[false ->> synchronous ( badpractise as it blocks the code, poor userExperience )] 
+	http.send();
+	console.log("test");
+
+};
+
+
+async.js -<<----< (jQuery)
+
+$.get("data/tweets.json", function(data){
+	console.log(data);
+});
+console.log("test");
+// default it is asynchronous
+
+
+Updating the DOM   ---------------<<
+By using the response from the server, 
+you can update the DOM. One way of doing that is by using getElementById. 
+Consider the same example from the previous card    
+
+<body>
+<p id="myElement"></p>
+<script>
+	var request= new XMLHttpRequest();
+	request.open('GET','example.txt',true);
+	request.send();
+	request.onreadystatechange = function() {
+		if(request.readyState == 4 && request.status == 200){
+			console.log(request);
+			document.getElementById("myElement").innerHTML = request.responseText;
+		}
+	};
+</script>
+</body>
+
+
+Parsing XML with AJAX    ---------------<<
+
+
+tuna.js -<<----<
+//when state changes
+function handleStateChange() {
+	if(xmlHttp.readyState == 4) {
+		if(xmlHttp.status == 200) {
+			try {
+				handleResponse();
+			}catch(e) {
+				alert(e.toString());
+			}
+		}else {
+			alert(xmlHttp.statusText);
+		}
+	}
+}
+
+//handle the response from the server
+function handleResponse() {
+	var xmlResponse = xmlHttp.responseXML;
+	root = xmlResponse.documentElement;
+	names = root.getElementsByTagName("name");
+	ssns = root.getElemetByTagName("ssn");
+
+}
+
+tuna.xml -<<----<
+<response>
+	<people>
+		<person>
+			<name>
+				Bucky Roberts
+			</name>
+			<ssn>	
+				sdfsh89345 
+			</ssn>
+		</person>
+		<person>
+			<name>
+				Mike Litoris
+			</name>
+			<ssn>
+				fbn434900fjewqf
+			</ssn>
+		</person>
+	</people>
+</response>
+
+
+
+Reading JSON Files	---------------<<
+
+Now let us see how to read from a JSON file using AJAX. 
+JSON consist of text, it can be converted into javascript object using JSON.parse() method
+
+var request= new XMLHttpRequest();
+request.open('GET','example.json',true);
+request.send();
+request.onreadystatechange = function() {
+if(request.readyState == 4 && request.status == 200){
+var item= JSON.parse(request.responseText)
+}
+};
+
+Here the variable item has a array of javascript objects where each object has a key value pair from the JSON file. 
+Now you can loop through these object to read the data and use it to update DOM.
+
+var list = '<ul>';
+for(var i in item)
+{
+  list += '<li>'+item[i].name+'</li>';
+}
+
+
+
+	---------  ooo --------(END)
+
+
+
+
+=========================================================================
+ MISC  --VV--
+=========================================================================
+
+===========================+++++++++++++++++++
+// Sorting Numbers
+
+var numbers = [3,342,23,22,124];
+numbers.sort(function(a,b){return b - a});
+console.log(numbers[0]);
+
+----------------------------------------------+++
+
+// Sorting library by title
+
+var library = [ { author: 'Bill Gates', title: 'The Road Ahead', libraryID: 1254}, 
+        { author: 'Steve Jobs', title: 'Walter Isaacson', libraryID: 4264}, 
+        { author: 'Suzanne Collins', title: 'Mockingjay: The Final Book of The Hunger Games', libraryID: 3245} ]; 
+console.log(library);
+function compare_to_sort(x,y) 
+ {
+  if (x.title < y.title)
+    return -1;
+  if (x.title > y.title)
+    return 1;
+  return 0;
+ }
+
+console.log(library.sort(compare_to_sort));
+
+===========================+++++++++++++++++++
+// Async Await ------------VV
+
+  function makeTea() {
+    console.log('Boiling water...');
+    setTimeout(() => {
+      console.log('Water is boiling');
+    }, 2000);
+    console.log('Adding tea leaves...');
+    setTimeout(() => {
+      console.log('Leaves are boiling');
+    }, 5000);
+    console.log('Tea is ready');
+  }
+  makeTea();
+
+  async function makeTeaAsync() {
+    console.log('A Boiling water...');
+    //Simulate a task that takes time (e.g. boiling water)
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    console.log('B Adding tea leaves...');
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+    console.log('C Tea is ready');
+  }
+  makeTeaAsync();
+
+===========================+++++++++++++++++++ 
+// JS Api's
+// Web Speech API -------------VV
+
+const textToSpeak = "Hello There";
+const utterance = 
+	new SpeechSynthesisUtterance(textToSpeak);
+widow.speechSynthesis.speak(utterance)
+
+// Web Storage API ------------VV
+// Store data 
+localStorage.setItem('key', 'value');
+// Retrive data
+const storedValue = localStorage.getItem('key');
+// Remove data
+localStorage.removeItem('key');
+
+===========================+++++++++++++++++++ 
+useRef ------------------------VV (React js)
+ -- will reach out to UI, and get its value.
