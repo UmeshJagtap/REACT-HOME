@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from './components/Sidebar';
 import Editor from './components/Editor';
-import { data } from './data';
+// import { data } from './data';
 import Split from 'react-split';
 import { nanoid } from 'nanoid';
 
@@ -29,6 +29,18 @@ import { nanoid } from 'nanoid';
  * it in the list of notes to the top of the list
  */
 
+/**
+ * Challenge: complete and implement the deleteNote function
+ *
+ * Hints:
+ * 1. What array method can be used to return a new
+ *    array that has filtered out an item based
+ *    on a condition?
+ * 2. Notice the parameters being based to the function
+ *    and think about how both of those parameters
+ *    can be passed in during the onClick event handler
+ */
+
 export default function App() {
   const [notes, setNotes] = React.useState(
     () => JSON.parse(localStorage.getItem('notes')) || []
@@ -43,7 +55,7 @@ export default function App() {
   React.useEffect(() => {
     localStorage.setItem('notes', JSON.stringify(notes));
     // console.log(JSON.stringify(notes[0].body))
-    console.log(notes[0].body.split('/n')[0]);
+    // console.log(notes[0].body.split('/n')[0]);
   }, [notes]);
 
   function createNewNote() {
@@ -113,6 +125,12 @@ export default function App() {
   //   // );
   // }
 
+  function deleteNote(event, noteId) {
+    event.stopPropagation(); // It will stop propagating event to it's parent div,...i.e. delete/trash icon is progtng to Note element
+    // Your code here
+    // console.log('deleted note', noteId);
+    setNotes((oldNotes) => oldNotes.filter((note) => note.id !== noteId));
+  }
   function findCurrentNote() {
     return (
       notes.find((note) => {
@@ -130,6 +148,7 @@ export default function App() {
             currentNote={findCurrentNote()}
             setCurrentNoteId={setCurrentNoteId}
             newNote={createNewNote}
+            deleteNote={deleteNote}
           />
           {currentNoteId && notes.length > 0 && (
             <Editor currentNote={findCurrentNote()} updateNote={updateNote} />

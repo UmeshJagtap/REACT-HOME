@@ -33,6 +33,29 @@ const summary = splittedNote;
 console.log(note);
 console.log(summary);
 
+Adding Firebase
+Webpack ---> Vite
+In Vite >>
+
+1. Rename components files -- js >> jsx
+2. In index.js
+   import React from "react"
+   import ReactDOM from "react-dom"
+   import App from "./App"
+   ReactDOM.render(<App />, document.getElementById("root"))
+3. In index.html
+   <script src="/index.jsx" type="module"></script>
+4. In Editor.js
+   import React from "react"
+   import R from "react-mde"
+   const ReactMde = R.default
+   import Showdown from "showdown"
+   ON LOCAL MACHINE
+   import React from "react"
+   import ReactMde from "react-mde"
+   // const ReactMde = R.default
+   import Showdown from "showdown"
+
 Features to Add :-------------------------------------------
 
 > Sync notes with localStorage
@@ -43,3 +66,4 @@ Features to Add :-------------------------------------------
 UI FINDS ++ ------------------------------------------
 https://cssanimation.rocks/animating-links/
 https://ui.aceternity.com/
+https://www.canva.com/design/DAGC-rFi9gM/PWwPDsR9WYmZHe-oSf6cUw/edit Tumble / Neon Effect
