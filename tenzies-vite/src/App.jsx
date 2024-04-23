@@ -21,7 +21,7 @@ function App() {
     }
     return newDice;
   }
-  console.log(allNewDice());
+  // console.log(allNewDice());
 
   // function random() {
   //   var randomNum = Math.ceil(Math.random() * 6);
@@ -60,7 +60,7 @@ function App() {
     setDice(allNewDice());
   }
 
-  console.log(dice);
+  // console.log(dice);
   const diceElements = dice.map((die) => <Die key={die.id} value={die.value} isHeld={die.isHeld} />);
 
   return (
