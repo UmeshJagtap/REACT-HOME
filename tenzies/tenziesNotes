@@ -1,1 +1,28 @@
-YT Link :- https://www.youtube.com/watch?v=bMknfKXIFA8
+YT Link :- https://www.youtube.com/watch?v=
+
+https://medium.com/@pascalokereke18/how-to-setup-a-react-project-with-vite-6c2130d3bce
+
+Creating via React + Vite ( Fast project creation )
+$ npm create vite@
+
+ZUK@DESKTOP-0M6F0IP MINGW64 ~/Desktop/REACT HOME/tenzies-vite
+$ npm create vite@latest
+Need to install the following packages:
+create-vite@5.2.3
+Ok to proceed? (y) y
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE package: 'create-vite@5.2.3',
+npm WARN EBADENGINE required: { node: '^18.0.0 || >=20.0.0' },
+npm WARN EBADENGINE current: { node: 'v19.4.0', npm: '9.6.2' }
+npm WARN EBADENGINE }
+√ Project name: ... tenzies-vite
+√ Select a framework: » React
+√ Select a variant: » JavaScript
+
+Scaffolding project in C:\Users\ZUK\Desktop\REACT HOME\tenzies-vite\tenzies-vite...
+
+Done. Now run:
+
+cd tenzies-vite
+npm install
+npm run dev
