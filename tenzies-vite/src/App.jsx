@@ -1,45 +1,51 @@
-import React from 'react';
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import Die from './components/Die';
+import {nanoid} from 'nanoid';
 
 function App() {
   // const [count, setCount] = useState(0);
-  const [dice, setDice] = React.useState(allNewDice());
-  function random() {
-    var randomNum = Math.ceil(Math.random() * 6);
-    return randomNum;
-  }
-  console.log(random());
+  const [dice, setDice] = useState(allNewDice());
+  // console.log(dice);
 
   function allNewDice() {
-    const newDice = [
-      {key:1, fv: random(), isHeld: true},
-      {key:2, fv: random(), isHeld: false},
-      {key:3, fv: random(), isHeld: true},
-    ];
-
-    for (let i = 4; i < 10; i++) {
-      // newDice.push(Math.ceil(Math.random() * 6));
-      newDice.push(
-        {key:[i], fv: random(), isHeld: true}
-      )
-      };
+    const newDice = [];
+    for (let i = 0; i < 10; i++) {
+      newDice.push({
+        value : Math.ceil(Math.random() * 6),
+        isHeld: true,
+        id: nanoid()
+      });
     }
     return newDice;
   }
   console.log(allNewDice());
 
-  // --------------------------------- REF --
-  var alerts = [
-    {num : 1, app:'helloworld',message:'message'},
-    {num : 2, app:'helloagain',message:'another message'}
-    ]
+  // function random() {
+  //   var randomNum = Math.ceil(Math.random() * 6);
+  //   return randomNum;
+  // }
+  // // console.log(random());
 
-    alerts.push({num : 3, app:'helloagain_again',message:'yet another message'});
-  // ------------------------------ REF END --
+  // function allNewDice() {
+  //   const newDice = [
+  //     {id:1, fv: random(), isHeld: true},
+  //     {id:2, fv: random(), isHeld: false},
+  //     {id:3, fv: random(), isHeld: true},
+  //   ];
+
+  //   for (let i = 4; i <= 10; i++) {
+  //     // newDice.push(Math.ceil(Math.random() * 6));
+  //     newDice.push(
+  //       {'id':i, fv: random(), isHeld: false}
+  //     )
+  //     };
+  //   return newDice;
+  // }
+  // // console.log(allNewDice());
+
 
   // function allNewDice() {
   //   const newDice = [];
@@ -54,7 +60,8 @@ function App() {
     setDice(allNewDice());
   }
 
-  const diceElements = dice.map((die) => <Die value={die} />);
+  console.log(dice);
+  const diceElements = dice.map((die) => <Die key={die.id} value={die.value} isHeld={die.isHeld} />);
 
   return (
     <>
@@ -91,6 +98,17 @@ function App() {
 
 export default App;
 
+// --------------------------------- REF --
+// var alerts = [
+//   {num : 1, app:'helloworld',message:'message'},
+//   {num : 2, app:'helloagain',message:'another message'}
+//   ]
+
+//   alerts.push({num : 3, app:'helloagain_again',message:'yet another message'});
+// ------------------------------ REF END --
+
+
+// OLD DEFAULT CODE ------------------------------- V ---
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
