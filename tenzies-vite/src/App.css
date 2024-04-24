@@ -82,7 +82,6 @@ main {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-color: white;
 }
 
 .die-num {
@@ -111,5 +110,5 @@ main {
 }
 
 .isHeld {
-  background-color: #59E391;
+  background-color: #59e391;
 }
