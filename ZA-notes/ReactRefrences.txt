@@ -1,0 +1,19 @@
+Complete MERN App (OTP Verification, JWT Token, Authentication, Reset Password)  https://www.youtube.com/watch?v=BfrJxGQEPSc
+
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="100" height="100" xml:space="preserve"><path fill="#8BC34A" d="m46.63 48.077-11.422 6.527v3.853l3.362 1.92 11.427-6.529 11.43 6.529 3.368-1.924v-3.848l-11.426-6.524V35.02l-3.37-1.925-3.369 1.925v13.056z"/><path fill="#263238" d="M50 10 15 30v40l35 20 34.99-19.994.01-.016V30L50 10zm0 7.699 24.891 14.22-6.732 3.849L50 25.396 31.846 35.771l-6.739-3.852L50 17.699zm-3.37 62.678L21.734 66.152V37.691l6.734 3.849v20.761L46.63 72.68v7.697zm-11.422-21.92V41.546l14.791-8.451 14.796 8.451v16.907L50 66.904l-14.792-8.447zm18.161 21.92V72.68l18.16-10.375V41.54l6.734-3.849v28.461h.002L53.369 80.377z"/></svg>
+.nav-container svg {
+  height: 100px;
+  width: 100px;
+}
+
+Airbnb Logo >> https://www.google.com/search?safe=active&rlz=1C1GCEA_enIN1004IN1004&q=airbnb+logo+png&tbm=isch&source=univ&fir=ntDmkxvrXgU8rM%252CwsIcJbJz_vmTbM%252C_%253Bwfy8LrQ5F6TfTM%252CKIrtz5c8u8_otM%252C_%253BgefUXz8C982cdM%252Cn_xV2AxShmVBEM%252C_%253B-e1fN-bKIcxg3M%252CQgsofyOWou_qDM%252C_%253BaySmfEnpPES59M%252CAozEl25iXvr3gM%252C_%253Bb0Fg-vsSLAjZoM%252CACovzt_6nB1tAM%252C_%253BNcbXq7xjhH_bcM%252CUJquBMff7r3W_M%252C_%253BMbF5bs_wh0ABbM%252CMtWzaEO_TleNVM%252C_%253Bp4L3flMsHf8fLM%252CEnnZNPH6xWX-0M%252C_%253BE4MI-RgVlMSWqM%252Cn_xV2AxShmVBEM%252C_%253B4KxnWKYQacpJLM%252C_TDbho_vQdvpgM%252C_%253B3Jg_VMQbUiV08M%252CuGuSxloeu8rKeM%252C_%253BBP2XP1iqEnbYHM%252Chrem9871cRyeqM%252C_%253B7Z_fmLB9frz9xM%252CfDAaVwCy57OAZM%252C_%253BHTlnT2isyIPbWM%252CUlx5_t5MI47XYM%252C_&usg=AI4_-kQRqVfxsiz5beyCEVmOQ_8xHfimoA&sa=X&ved=2ahUKEwiS0-ab3-D8AhW8yKACHbPKAG8Q7Al6BAgIEEQ&biw=852&bih=808&dpr=1.13#imgrc=ntDmkxvrXgU8rM
+
+Build and Deploy a Full Stack MERN AI Image Generation App | Midjourney & DALL-E Clone >> https://www.youtube.com/watch?v=EyIvuigqDoA
+Top 10 CSS One Liners That Will Blow Your Mind >> https://www.youtube.com/watch?v=Xc6G3oV24yE 
+Build and Deploy 4 Modern React Apps and Get Hired as a Frontend Developer | Full 10-Hour Course 
+    >>https://www.youtube.com/watch?v=F627pKNUCVQ
+
+LTI (L&T) Frontend Interview | (Round-2) 🎉 | Part - 1 | HTML/CSS/ #javascriptinterview 
+    >>https://www.youtube.com/watch?v=ssRvlc57CCk
+LTI (L&T) Frontend Interview | (Round-2) 🎉 | Part - 2 | HTML/CSS/ #javascriptinterview
+    >>https://www.youtube.com/watch?v=jBlRkN67h9A
