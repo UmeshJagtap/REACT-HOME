@@ -135,9 +135,14 @@ function FromSimplified() {
         <option value="violet">Violet</option>
         <option value="black">Black</option>
       </select>
+      <div>{formData.favColor}</div>
       <br />
 
-      <button type="submit">Send it in</button>
+      <button type="submit" id="submit">
+        Send it in
+      </button>
+
+      <div className="response"></div>
     </form>
   );
 }

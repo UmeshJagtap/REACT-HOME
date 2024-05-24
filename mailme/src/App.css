@@ -6,7 +6,7 @@
 }
 
 .logo {
-  height: 6em;
+  height: 2em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
@@ -39,4 +39,72 @@
 
 .read-the-docs {
   color: #888;
+}
+
+form {
+  /* display: flex; */
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid gray;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+input {
+  margin: 15px;
+  height: 30px;
+  text-indent: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  display: block;
+}
+textarea {
+  margin: 15px;
+  text-indent: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  display: block;
+}
+form > textarea {
+  color: grey;
+}
+.checkbox,
+fieldset {
+  display: flex;
+  align-items: center;
+}
+.signUpFormBody {
+  background-color: darkblue;
+  padding: 0.3rem;
+  border-radius: 2rem;
+  margin: 1rem;
+}
+.signUpForm {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 1rem;
+  /* margin: 2rem; */
+}
+.signUpButton {
+  color: white;
+  background-color: darkblue;
+  border-radius: 0.2rem;
+  padding: 0.3rem 0.8rem;
+}
+
+#submit {
+  color: #444;
+  background-color: #eee;
+  margin-top: 1rem;
+}
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
