@@ -1,0 +1,3 @@
+Dir structure >> https://stackoverflow.com/questions/51126472/how-to-organise-file-structure-of-backend-and-frontend-in-mern
+
+Try to add    "dev": "nodemon index.js"   to scripts in package.json
