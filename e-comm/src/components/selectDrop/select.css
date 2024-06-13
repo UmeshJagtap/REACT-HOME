@@ -1,0 +1,8 @@
+.selectDrop .drop {
+  width: 10px;
+  height: 30px;
+  background: #ccc;
+  position: relative;
+  top: 0px;
+  left: 0px;
+}

@@ -1,0 +1,20 @@
+
+YT >> https://www.youtube.com/watch?v=62X6GEllRYI
+
+
+GitRepo >> https://github.com/rinkuv37/Ecommerce-Website-React/blob/main/src/components/catSlider/index.js
+
+MIUI >> https://mui.com/material-ui/getting-started/installation/    https://mui.com/material-ui/material-icons/?query=search
+
+LOGO >> https://www.vecteezy.com/vector-art/6515841-fruit-and-vegetable-logo-design
+
+LOGO >> https://www.shutterstock.com/search/vegetables-logo
+
+FONT >> https://fonts.google.com/selection/embed
+
+
+>> -------------------------------------------
+https://github.com/nsafarova/ecommerce-shop-react-app/tree/master
+https://ecommerce-shop-react-app.vercel.app/
+https://dog.ceo/dog-api/breeds-list
+https://ecommerce-shop-react-app.vercel.app/
