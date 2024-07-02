@@ -1,0 +1,12 @@
+React 19 is here !!!
+
+The benifit of immediate UI updates without relying on loaders 
+or waiting for requests to get updated data seems really good, 
+and it can certainly imporve the feel of your apps!
+
+useOptimistic()
+
+
+const [optimisticData, setOptimisticData] = useOptimistic(data);
+const [isPending, startTransition] = useTransition();
+
