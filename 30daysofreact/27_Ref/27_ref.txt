@@ -115,4 +115,21 @@ const App = (props) => {
 }
 
 const rootElement = document.getElementById('root')
-ReactDOM.render(<App />, rootElement
+ReactDOM.render(<App />, rootElement)
+
+// ----------------------------------------------------------------------
+
+// Exercises
+// Develop the following application. The application generates 27 hexadecimal colors by default. If the generate button get clicked it will generate another new 27 hexadecimal colors.
+
+// 30 Days Of React
+// Hexadecimal Colors
+// GENERATE
+// #4be538
+// #4917a4
+// #af7e8d
+// #139d2a
+// #baae87
+// #f77387
+// #08852b
+// #bbbef5

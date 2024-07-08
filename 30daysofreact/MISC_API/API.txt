@@ -1,7 +1,8 @@
 //  FAKE STORE API ------------------------------------------------------------
 
 import React, { useState, useRef, useEffect } from 'react';
-import './style.css';
+// import './style.css';
+import './App.css';
 
 export default function App() {
   const [products, setProducts] = React.useState([]);
@@ -13,14 +14,28 @@ export default function App() {
     setProducts(data);
   };
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   fetchProducts();
+  // }, []);
+
+  function handleFetch() {
     fetchProducts();
-  }, []);
+  }
 
   return (
     <div>
-      <p>Start editing to see some magic happen :)</p>
-      <p>Data Fecthing via an API</p>
+      <div
+        style={{
+          width: '800px',
+          padding: '20px',
+          margin: '20px',
+          border: '1px solid red',
+        }}
+      >
+        <p>Start editing to see some magic happen :)</p>
+        <p>Data Fecthing via an API</p>
+        <button onClick={handleFetch}>FETCH PRODUCTS</button>
+      </div>
       {products.map((product) => {
         return (
           <>
