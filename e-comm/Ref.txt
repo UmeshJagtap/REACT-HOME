@@ -1,5 +1,9 @@
 
+Complete Ecommerce Project in React Js #2: Complete Header Component with Navbar 🔥 @rinkuverma
+
 YT >> https://www.youtube.com/watch?v=62X6GEllRYI
+
+
 
 
 GitRepo >> https://github.com/rinkuv37/Ecommerce-Website-React/blob/main/src/components/catSlider/index.js
