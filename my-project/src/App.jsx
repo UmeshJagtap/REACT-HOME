@@ -3,6 +3,9 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 
+import FetchProducts from './FetchProducts';
+import FecthDog from './FetchDog';
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -16,23 +19,47 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1 className="text-3xl font-bold underline text-red-600">
+      {/* <h1 className="text-3xl font-bold underline text-red-600">
         Hello world!
-      </h1>
-      <h1>Vite + React</h1>
+      </h1> */}
+      {/* <h1>Vite + React</h1> */}
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        {/* <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
-        </button>
-        <p>
+        </button> */}
+        {/* <p>
           Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        </p> */}
       </div>
-      <p className="read-the-docs">
+      {/* <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
+      </p> */}
+      <FetchProducts />
+      <FecthDog />
     </>
   );
 }
 
 export default App;
+
+// AXIOS ---
+
+// import { useEffect, useState } from 'react'
+// import axios from 'axios'
+// const Axios = () => {
+//   const [meals, setMeals] = useState([])
+//   useEffect(() => {
+//     axios.get('https://www.themealdb.com/api/json/v1/1/random.php')
+//       .then((res) => {
+//         setMeals(res.data.meals);
+//       })
+//   }, [])
+
+//   return (
+//     <div>
+//       {meals.map((meal) => (
+//       <img key={meal.idMeal} src={meal.strMealThumb} alt={meal.strMeal} width={400}/>
+//       ))}
+//     </div>
+//  )
+// };
