@@ -10,7 +10,3 @@ useOptimistic()
 const [optimisticData, setOptimisticData] = useOptimistic(data);
 const [isPending, startTransition] = useTransition();
 
-//---------------------------------------------------------------------//
-[ Live ] React JS Interview 🤯 | Frontend UI Questions 🤒 
-https://www.youtube.com/watch?v=U9sDK8zTJ8Y
-
