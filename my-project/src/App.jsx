@@ -1,10 +1,13 @@
-import { useState } from 'react';
+// import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 
 import FetchProducts from './FetchProducts';
 import FecthDog from './FetchDog';
+import Axios from './axiosFetch';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -36,30 +39,53 @@ function App() {
       </p> */}
       <FetchProducts />
       <FecthDog />
+      <Axios />
     </>
   );
 }
 
 export default App;
 
-// AXIOS ---
+//  using CustomHook i.e. useFetch
 
-// import { useEffect, useState } from 'react'
-// import axios from 'axios'
-// const Axios = () => {
-//   const [meals, setMeals] = useState([])
-//   useEffect(() => {
-//     axios.get('https://www.themealdb.com/api/json/v1/1/random.php')
-//       .then((res) => {
-//         setMeals(res.data.meals);
-//       })
-//   }, [])
+// import React, { useState, useEffect } from 'react';
+// import useFetch from './useFetch';
+
+// const Product = ({ product }) => {
+//   // console.log(product);
+//   return (
+//     <>
+//       <h2>{product.title}</h2>
+//       <p key={product.id}>{product.category}</p>
+//       <img
+//         src={product.image}
+//         alt="product image"
+//         style={{ width: '100px', border: '1px solid red' }}
+//       />
+//       <p>{product.price}</p>
+//       <hr />
+//     </>
+//   );
+// };
+
+// const App = () => {
+//   const [data] = useFetch('https://fakestoreapi.com/products');
+
+//   // console.log(data);
 
 //   return (
-//     <div>
-//       {meals.map((meal) => (
-//       <img key={meal.idMeal} src={meal.strMealThumb} alt={meal.strMeal} width={400}/>
-//       ))}
+//     <div className="App">
+//       <h1>Fetching Data Using Hook</h1>
+//       <h1>Calling API</h1>
+//       <div>
+//         <p>There are {data.length} products in the store</p>
+
+//         {data.map((product) => (
+//           <Product product={product} key={product.id} />
+//         ))}
+//       </div>
 //     </div>
-//  )
+//   );
 // };
+
+// export default App;

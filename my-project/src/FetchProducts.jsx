@@ -38,7 +38,7 @@ export default function FetchProducts() {
       </div>
       {products.map((product) => {
         return (
-          <>
+          <div key={product.id}>
             <h2>{product.title}</h2>
             <p key={product.id}>{product.category}</p>
             <img
@@ -48,7 +48,7 @@ export default function FetchProducts() {
             />
             <p>{product.price}</p>
             <hr />
-          </>
+          </div>
         );
       })}
     </div>

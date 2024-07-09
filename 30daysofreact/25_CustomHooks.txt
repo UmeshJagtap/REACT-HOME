@@ -48,7 +48,6 @@ export default useFetch;
 // Receive ProductData from useFetch Component and pass/map it to Product Component
 
 import React, { useState, useEffect } from 'react';
-import ReactDOM, { findDOMNode } from 'react-dom';
 import useFetch from './useFetch';
 
 const Product = ({ product }) => {
