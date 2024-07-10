@@ -1,0 +1,76 @@
+// 30 Days Of React: Project Using React Hooks
+
+// Ref :- https://www.30daysofreact.com/day-23/countries-data
+
+// ---------------------------------------------- App.js  **( Yet to implement Search Functionality )
+
+// Create Country Component to display countries
+// Receive CountryData from 'data/countries.js' and pass/map it to Country Component
+
+import React, { useState, useEffect } from 'react';
+import countriesData from '../data/countries';
+
+// Sample Country Object
+// {
+//   name: 'Zimbabwe',
+//   capital: 'Harare',
+//   languages: ['English', 'Shona', 'Northern Ndebele'],
+//   population: 14240168,
+//   flag: 'https://restcountries.eu/data/zwe.svg',
+//   currency: 'Botswana pula',
+// },
+
+const Country = ({ country_info }) => {
+  // console.log(country_info);
+  return (
+    <>
+      <div key={country_info.name}>
+        <hr />
+        <img src={country_info.flag} alt="country flag" />
+        <p>{country_info.name.toUpperCase()}</p>
+        <p>Capital: {country_info.capital}</p>
+        <p>
+          Languages:{' '}
+          {country_info.languages.map((language) => (
+            <p>{language},</p>
+          ))}
+        </p>
+        <p>Population: {country_info.population}</p>
+        <p>Currency: {country_info.currency}</p>
+        <hr />
+      </div>
+    </>
+  );
+};
+
+const App = () => {
+  // console.log(countriesData);
+
+  return (
+    <div className="App">
+      <div>
+        <div className="country-banner">
+          <h2>World Countries Data</h2>
+          <p>Currently we have {countriesData.length} countries</p>
+          <hr />
+        </div>
+        {/* {countriesData.map((country) => {
+          return (
+            <div key={country.name}>
+              <p>{country.name}</p>
+            </div>
+          );
+        })} */}
+        {countriesData.map((country) => {
+          return (
+            <>
+              <Country country_info={country} key={country.name} />
+            </>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default App;
