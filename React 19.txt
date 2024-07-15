@@ -12,7 +12,7 @@ const [isPending, startTransition] = useTransition();
 
 
 
-// --------------------------------------------------------------------   Few latest use className
+// --------------------------------------------------------------------   Few latest useCases
 
 React 19 introduces a new experimental API called use, designed to read the value of resources like Promises or context within the render function. 
 This allows for cleaner and more concise code when dealing with asynchronous data fetching or state management.
