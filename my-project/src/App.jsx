@@ -7,6 +7,7 @@ import './App.css';
 
 import FetchProducts from './FetchProducts';
 import FecthDog from './FetchDog';
+import UseFetch1 from './UseFetch1';
 import Axios from './axiosFetch';
 
 function App() {
@@ -39,7 +40,8 @@ function App() {
       </p> */}
       <FetchProducts />
       <FecthDog />
-      <Axios />
+      {/* <Axios /> */}
+      <UseFetch1 />
     </>
   );
 }
