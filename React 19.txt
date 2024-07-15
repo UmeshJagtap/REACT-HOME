@@ -10,3 +10,27 @@ useOptimistic()
 const [optimisticData, setOptimisticData] = useOptimistic(data);
 const [isPending, startTransition] = useTransition();
 
+
+
+// --------------------------------------------------------------------   Few latest use className
+
+import { Suspense, use } from "react";
+
+async function fetchdata() {
+    const response = await fetch("https://api.example.com/data);
+    return await response.json();
+}
+
+function Cards() {
+    const data = use(fetchData);
+    return (
+        <>
+          <Suspense fallback={<div>Loading Data...</div>}>
+          <div>
+            <h1>My Data</h1>
+            <p>{data.message}</p>
+          </div>  
+          </Suspense>
+        </>
+    );
+}
