@@ -227,7 +227,6 @@ Another HTML fields to get data from a form are textarea and select with options
 
 // --------------------------------------------------------- ( Getting multiple input data from form --> Using useState hook )
 
-// BUG HERE, ONLY TITLE is displayed rather than whole form Data.
 
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
