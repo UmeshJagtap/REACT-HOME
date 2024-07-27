@@ -70,10 +70,19 @@ export default function App() {
 
   return (
     <div>
-      <h1>Cat API</h1>
-      <button onClick={fetchData1}>Fetch New Cat</button>
+      <h1>Cats Paradise</h1>
+      <img
+        src="https://img.freepik.com/premium-photo/minimalist-cat-icon-kimoicore39s-innovative-detailed-design_899449-90624.jpg"
+        alt="cat"
+        style={{ height: 100 }}
+      />
+      <button onClick={fetchData1} className="border px-1">
+        Fetch Cats
+      </button>
       <br />
       {/* {JSON.stringify(data)} */}
+      <p>There are {data.length} cat breeds</p>
+      <p>On average a cat can weight about NaN Kg and lives NaN years. ????</p>
       {data.map((cat) => {
         return (
           <div key={cat.id}>
@@ -83,6 +92,7 @@ export default function App() {
               <h4>Lifespan : {cat.life_span} years.</h4>
               <p>{cat.description}</p>
               <p>{cat.temperament}</p>
+              <p>Weight : {cat.weight.metric} kg.</p>
               <img
                 src={`https://cdn2.thecatapi.com/images/${cat.reference_image_id}.jpg`}
                 alt="catPic"
