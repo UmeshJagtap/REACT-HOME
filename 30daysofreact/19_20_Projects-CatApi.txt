@@ -2,63 +2,50 @@ Projects
 Congratulations for making it to this far. Now, you have a solid understanding of React. I believe we have covered most important features of React and your are ready to work on projects. What we have covered so far is the old version of React. Starting from Day 20, we will learn React Hooks. In the next three days you will work on projects only.
 
 Exercises
-Use the following two APIs, all cats and [a single cat][https://api.thecatapi.com/v1/images/search?breed_id=abys].
+Use the following two APIs, all cats and [a single cat] [https://api.thecatapi.com/v1/images/search?breed_id=abys].
 In the single cat API, you can get url property which is the image of the cat. Your result should look like this demo.
 
 🎉 CONGRATULATIONS ! 🎉
 
 
-//  USE THIS AS REFRENCE !!!!
+//  Single Cat Image
 
-import React, { useState, useRef, useEffect } from 'react';
-// import './style.css';
-import './App.css';
+import React, { useState } from 'react';
 
 export default function App() {
-  const [products, setProducts] = React.useState([]);
+  const [data, setData] = useState([
+    {
+      id: 'gCEFbK7in',
+      url: 'https://cdn2.thecatapi.com/images/gCEFbK7in.jpg',
+      width: 1424,
+      height: 987,
+    },
+  ]);
 
-  const fetchProducts = async () => {
-    const res = await fetch('https://fakestoreapi.com/products');
-    const data = await res.json();
-    console.log(data);
-    setProducts(data);
+  const fetchData1 = () => {
+    const url = 'https://api.thecatapi.com/v1/images/search?breed_id=abys';
+    // const url = 'https://api.thecatapi.com/v1/breeds';
+    fetch(url)
+      .then((response) => response.json())
+      .then((response) => setData(response));
+    // .then((json) => console.log(json));
   };
-
-  // useEffect(() => {
-  //   fetchProducts();
-  // }, []);
-
-  function handleFetch() {
-    fetchProducts();
-  }
 
   return (
     <div>
-      <div
-        style={{
-          width: '800px',
-          padding: '20px',
-          margin: '20px',
-          border: '1px solid red',
-        }}
-      >
-        <p>Start editing to see some magic happen :)</p>
-        <p>Data Fecthing via an API</p>
-        <button onClick={handleFetch}>FETCH PRODUCTS</button>
-      </div>
-      {products.map((product) => {
+      <h1>Cat API</h1>
+      <button onClick={fetchData1}>Fetch New Cat</button>
+      <br />
+      {JSON.stringify(data)}
+      {data.map((cat) => {
         return (
-          <>
-            <h2>{product.title}</h2>
-            <p key={product.id}>{product.category}</p>
+          <div key={cat.id}>
             <img
-              src={product.image}
-              alt="product image"
-              style={{ width: '100px', border: '1px solid red' }}
+              src={cat.url}
+              alt="catPic"
+              style={{ height: 500, width: 500 }}
             />
-            <p>{product.price}</p>
-            <hr />
-          </>
+          </div>
         );
       })}
     </div>
