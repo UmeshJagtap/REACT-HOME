@@ -1,0 +1,678 @@
+// React Lists
+// React Forms
+// React Router
+// React Memo
+// Styling React Using CSS
+
+// --------------------------------------------
+// React Lists
+// --------------------------------------------
+// In React, you will render lists with some type of loop.
+// The JavaScript map() array method is generally the preferred method.
+
+// Example:
+// Let's render all of the cars from our garage:
+
+function Car(props) {
+  return <li>I am a { props.brand }</li>;
+}
+
+function Garage() {
+  const cars = ['Ford', 'BMW', 'Audi'];
+  return (
+    <>
+      <h1>Who lives in my garage?</h1>
+      <ul>
+        {cars.map((car) => <Car brand={car} />)}
+      </ul>
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Garage />);
+
+// When you run this code in your create-react-app, 
+// it will work but you will receive a warning that there is no "key" provided for the list items.
+
+// Keys
+// Keys allow React to keep track of elements. This way, if an item is updated or removed, only that item will be re-rendered instead of the entire list.
+// Keys need to be unique to each sibling. But they can be duplicated globally.
+// Generally, the key should be a unique ID assigned to each item. As a last resort, you can use the array index as a key.
+
+// Let's refactor our previous example to include keys:
+
+function Car(props) {
+  return <li>I am a { props.brand }</li>;
+}
+
+function Garage() {
+  const cars = [
+    {id: 1, brand: 'Ford'},
+    {id: 2, brand: 'BMW'},
+    {id: 3, brand: 'Audi'}
+  ];
+  return (
+    <>
+      <h1>Who lives in my garage?</h1>
+      <ul>
+        {cars.map((car) => <Car key={car.id} brand={car.brand} />)}
+      </ul>
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Garage />);
+
+
+
+// --------------------------------------------
+// React Forms
+// --------------------------------------------
+
+function MyForm() {
+    return (
+      <form>
+        <label>Enter your name:
+          <input type="text" />
+        </label>
+      </form>
+    )
+  }
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(<MyForm />);
+
+// This will work as normal, the form will submit and the page will refresh.
+
+
+// Handling Forms -------------------------VV---
+// You can control changes by adding event handlers in the onChange attribute.
+// We can use the useState Hook to keep track of each inputs value and provide a "single source of truth" for the entire application.
+
+import { useState } from 'react';
+import ReactDOM from 'react-dom/client';
+
+function MyForm() {
+  const [name, setName] = useState("");
+
+  return (
+    <form>
+      <label>Enter your name:
+        <input
+          type="text" 
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </label>
+    </form>
+  )
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<MyForm />);
+
+
+// Submitting Forms -------------------------VV---
+// You can control the submit action by adding an event handler in the onSubmit attribute for the <form>:
+
+import { useState } from 'react';
+import ReactDOM from 'react-dom/client';
+
+function MyForm() {
+  const [name, setName] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(`The name you entered was: ${name}`)
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>Enter your name:
+        <input 
+          type="text" 
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </label>
+      <input type="submit" />
+    </form>
+  )
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<MyForm />);
+
+
+// Multiple Input Fields -------------------------VV---
+// You can control the values of more than one input field by adding a name attribute to each element.
+// We will initialize our state with an empty object.
+// To access the fields in the event handler use the event.target.name and event.target.value syntax.
+// To update the state, use square brackets [bracket notation] around the property name.
+
+import { useState } from 'react';
+import ReactDOM from 'react-dom/client';
+
+function MyForm() {
+  const [inputs, setInputs] = useState({});
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({...values, [name]: value}))
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(inputs);
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>Enter your name:
+      <input 
+        type="text" 
+        name="username" 
+        value={inputs.username || ""} 
+        onChange={handleChange}
+      />
+      </label>
+      <label>Enter your age:
+        <input 
+          type="number" 
+          name="age" 
+          value={inputs.age || ""} 
+          onChange={handleChange}
+        />
+        </label>
+        <input type="submit" />
+    </form>
+  )
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<MyForm />);
+
+
+// Textarea -------------------------VV---
+// In React the value of a textarea is placed in a value attribute. We'll use the useState Hook to manage the value of the textarea:
+
+import { useState } from 'react';
+import ReactDOM from 'react-dom/client';
+
+function MyForm() {
+  const [textarea, setTextarea] = useState(
+    "The content of a textarea goes in the value attribute"
+  );
+
+  const handleChange = (event) => {
+    setTextarea(event.target.value)
+  }
+
+  return (
+    <form>
+      <textarea value={textarea} onChange={handleChange} />
+    </form>
+  )
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<MyForm />);
+
+
+// Select -------------------------VV---
+// A drop down list, or a select box, in React is also a bit different from HTML.
+// In React, the selected value is defined with a value attribute on the select tag:
+
+// A simple select box, where the selected value "Volvo" is initialized in the constructor:
+
+function MyForm() {
+    const [myCar, setMyCar] = useState("Volvo");
+  
+    const handleChange = (event) => {
+      setMyCar(event.target.value)
+    }
+  
+    return (
+      <form>
+        <select value={myCar} onChange={handleChange}>
+          <option value="Ford">Ford</option>
+          <option value="Volvo">Volvo</option>
+          <option value="Fiat">Fiat</option>
+        </select>
+      </form>
+    )
+  }
+
+// By making these slight changes to <textarea> and <select>, React is able to handle all input elements in the same way.
+
+
+// --------------------------------------------
+// React Router
+// --------------------------------------------
+
+// Create React App doesn't include page routing.
+// React Router is the most popular solution.
+
+// Add React Router
+// To add React Router in your application, run this in the terminal from the root directory of the application:
+
+// npm i -D react-router-dom
+
+// Folder Structure
+// To create an application with multiple page routes, let's first start with the file structure.
+
+// Within the src folder, we'll create a folder named pages with several files:
+
+// src\pages\:
+
+Layout.js
+Home.js
+Blogs.js
+Contact.js
+NoPage.js
+// Each file will contain a very basic React component.
+
+// Use React Router to route to pages based on URL:
+
+// index.js:
+
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Blogs from "./pages/Blogs";
+import Contact from "./pages/Contact";
+import NoPage from "./pages/NoPage";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+
+// Example Explained
+// We wrap our content first with <BrowserRouter>.
+// Then we define our <Routes>. An application can have multiple <Routes>. Our basic example only uses one.
+// <Route>s can be nested. The first <Route> has a path of / and renders the Layout component.
+// The nested <Route>s inherit and add to the parent route. So the blogs path is combined with the parent and becomes /blogs.
+// The Home component route does not have a path but has an index attribute. That specifies this route as the default route for the parent route, which is /.
+// Setting the path to * will act as a catch-all for any undefined URLs. This is great for a 404 error page.
+
+// Layout.js
+
+import { Outlet, Link } from "react-router-dom";
+
+const Layout = () => {
+  return (
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/blogs">Blogs</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <Outlet />
+    </>
+  )
+};
+
+export default Layout;
+
+// Home.js
+const Home = () => {
+    return <h1>Home</h1>;
+  };
+  
+export default Home;
+
+// Blog.js
+const Blogs = () => {
+    return <h1>Blog Articles</h1>;
+  };
+  
+export default Blogs;
+
+// Contact.js
+const Contact = () => {
+  return <h1>Contact Me</h1>;
+};
+
+export default Contact;
+
+// NoPage.js:
+const NoPage = () => {
+  return <h1>404</h1>;
+};
+
+export default NoPage;
+
+
+// --------------------------------------------
+// React Memo
+// --------------------------------------------
+
+// Using memo will cause React to skip rendering a component if its props have not changed.
+// This can improve performance.
+
+// In this example, the Todos component re-renders even when the todos have not changed.
+
+// Example:
+
+// index.js:
+
+import { useState } from "react";
+import ReactDOM from "react-dom/client";
+import Todos from "./Todos";
+
+const App = () => {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState(["todo 1", "todo 2"]);
+
+  const increment = () => {
+    setCount((c) => c + 1);
+  };
+
+  return (
+    <>
+      <Todos todos={todos} />
+      <hr />
+      <div>
+        Count: {count}
+        <button onClick={increment}>+</button>
+      </div>
+    </>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+
+// Todos.js:
+
+const Todos = ({ todos }) => {
+  console.log("child render");
+  return (
+    <>
+      <h2>My Todos</h2>
+      {todos.map((todo, index) => {
+        return <p key={index}>{todo}</p>;
+      })}
+    </>
+  );
+};
+
+export default Todos;
+
+// When you click the increment button, the Todos component re-renders.
+// If this component was complex, it could cause performance issues.
+
+
+// Solution
+// To fix this, we can use memo.
+// Use memoto keep the Todos component from needlessly re-rendering.
+// Wrap the Todos component export in memo:
+
+// index.js:
+
+import { useState } from "react";
+import ReactDOM from "react-dom/client";
+import Todos from "./Todos";
+
+const App = () => {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState(["todo 1", "todo 2"]);
+
+  const increment = () => {
+    setCount((c) => c + 1);
+  };
+
+  return (
+    <>
+      <Todos todos={todos} />
+      <hr />
+      <div>
+        Count: {count}
+        <button onClick={increment}>+</button>
+      </div>
+    </>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+
+
+// Todos.js:
+
+import { memo } from "react";
+
+const Todos = ({ todos }) => {
+  console.log("child render");
+  return (
+    <>
+      <h2>My Todos</h2>
+      {todos.map((todo, index) => {
+        return <p key={index}>{todo}</p>;
+      })}
+    </>
+  );
+};
+
+export default memo(Todos);
+
+// Now the Todos component only re-renders when the todos that are passed to it through props are updated.
+
+
+// --------------------------------------------
+// Styling React Using CSS
+// --------------------------------------------
+
+// There are many ways to style React with CSS, this tutorial will take a closer look at three common ways:
+// Inline styling
+// CSS stylesheets
+// CSS Modules
+
+// Inline Styling
+// To style an element with the inline style attribute, the value must be a JavaScript object:
+
+// Example:Get your own React.js Server
+// Insert an object with the styling information:
+
+const Header = () => {
+  return (
+    <>
+      <h1 style={{color: "red"}}>Hello Style!</h1>
+      <p>Add a little style!</p>
+    </>
+  );
+}
+
+// Note: In JSX, JavaScript expressions are written inside curly braces, and since JavaScript objects also use curly braces, 
+// the styling in the example above is written inside two sets of curly braces {{}}.
+
+// camelCased Property Names
+// Since the inline CSS is written in a JavaScript object, properties with hyphen separators, 
+// like background-color, must be written with camel case syntax:
+
+// Example:
+// Use backgroundColor instead of background-color:
+
+const Header = () => {
+  return (
+    <>
+      <h1 style={{backgroundColor: "lightblue"}}>Hello Style!</h1>
+      <p>Add a little style!</p>
+    </>
+  );
+}
+
+
+// JavaScript Object
+// You can also create an object with styling information, and refer to it in the style attribute:
+
+// Example:
+// Create a style object named myStyle:
+
+const Header = () => {
+  const myStyle = {
+    color: "white",
+    backgroundColor: "DodgerBlue",
+    padding: "10px",
+    fontFamily: "Sans-Serif"
+  };
+  return (
+    <>
+      <h1 style={myStyle}>Hello Style!</h1>
+      <p>Add a little style!</p>
+    </>
+  );
+}
+
+
+// CSS Stylesheet
+// You can write your CSS styling in a separate file, 
+// just save the file with the .css file extension, and import it in your application.
+
+// App.css:
+// Create a new file called "App.css" and insert some CSS code in it:
+
+body {
+  background-color: #282c34;
+  color: white;
+  padding: 40px;
+  font-family: Sans-Serif;
+  text-align: center;
+}
+
+// Note: You can call the file whatever you like, just remember the correct file extension.
+
+// Import the stylesheet in your application:
+
+index.js:
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './App.css';
+
+const Header = () => {
+  return (
+    <>
+      <h1>Hello Style!</h1>
+      <p>Add a little style!.</p>
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Header />);
+
+// CSS Modules
+// Another way of adding styles to your application is to use CSS Modules.
+// CSS Modules are convenient for components that are placed in separate files.
+// The CSS inside a module is available only for the component that imported it, and you do not have to worry about name conflicts.
+
+// Create the CSS module with the .module.css extension, example: my-style.module.css.
+// Create a new file called "my-style.module.css" and insert some CSS code in it:
+
+// my-style.module.css:
+
+.bigblue {
+  color: DodgerBlue;
+  padding: 40px;
+  font-family: Sans-Serif;
+  text-align: center;
+}
+
+// Import the stylesheet in your component:
+
+// Car.js:
+import styles from './my-style.module.css'; 
+
+const Car = () => {
+  return <h1 className={styles.bigblue}>Hello Car!</h1>;
+}
+
+export default Car;
+
+// Import the component in your application:
+
+// index.js:
+import ReactDOM from 'react-dom/client';
+import Car from './Car.js';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Car />);
+
+// --------------------------------------------
+// Styling React Using Sass
+// --------------------------------------------
+
+// What is Sass
+// Sass is a CSS pre-processor.
+// Sass files are executed on the server and sends CSS to the browser.
+
+// Can I use Sass?
+// If you use the create-react-app in your project, you can easily install and use Sass in your React projects.
+
+// Install Sass by running this command in your terminal:
+
+// >npm i sass
+// Now you are ready to include Sass files in your project!
+
+// Create a Sass file
+// Create a Sass file the same way as you create CSS files, but Sass files have the file extension .scss
+
+// In Sass files you can use variables and other Sass functions:
+
+// Example
+// my-sass.scss:
+
+// Create a variable to define the color of the text:
+
+$myColor: red;
+
+h1 {
+  color: $myColor;
+}
+
+// Import the Sass file the same way as you imported a CSS file:
+
+// Example
+// index.js:
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './my-sass.scss';
+
+const Header = () => {
+  return (
+    <>
+      <h1>Hello Style!</h1>
+      <p>Add a little style!.</p>
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Header />);
