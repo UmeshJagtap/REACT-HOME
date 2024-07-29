@@ -1,0 +1,84 @@
+// Fetch
+// Currently, JavaScript provides a fetch API to make HTTP requests. Fetch might not be supported by all browsers therefore we have install addition package for browser supports. 
+// However, if we use Axios we do not need to use additional package for browser support. Axios code seems neater than fetch. In this section we will see the difference between fetch and axios. 
+// May be if you want to know the browser support of fetch you check out on caniuse website. As of today, it has 95.62% browser support.
+
+// https://github.com/mdn/learning-area
+
+import React, { useState } from 'react';
+
+export default function App() {
+  const [data, setData] = useState([]);
+
+  const fetchData = () => {
+    const url =
+      'https://restcountries.com/v3.1/all?fields=name,capital,area,currencies?limit=10';
+    fetch(url)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        // console.log(data);
+        setData(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  return (
+    <>
+      <p>Fetch And Axios</p>
+      <button onClick={fetchData}>Fetch Data</button>
+      {JSON.stringify(data)}
+    </>
+  );
+}
+
+// Axios
+// Axios is a third party package and we need to install it using npm. It is the most popular way to make HTTP requests(GET, POST, PUT, PATCH, DELETE). 
+// In this example, we will cover only a get request.
+
+// https://jsfiddle.net/0z9wgx7u/3/
+
+const url = 'https://restcountries.eu/rest/v2/all';
+axios
+  .get(url)
+  .then((response) => {
+    this.setState({
+      data: response.data,
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+
+
+// Make a GET request
+
+axios.get(root)
+  .then((data) => {
+  console.log('data', data)
+})
+  .catch((e) => {
+  console.log('error', e)
+}) */
+
+/* import axios from 'axios';
+
+const ajaxToGetData = () => {
+  axios.get('https://jsonplaceholder.typicode.com/posts').then((response) => {
+    console.log('data:', response.data);
+  });
+};
+
+
+ajaxToGetData(); */
+
+async function getActivity() {
+    let response = await axiosRequest.get('https://www.boredapi.com/api/activity')
+    console.log(`You could ${response.data.activity}`)
+}
+
+getActivity();
