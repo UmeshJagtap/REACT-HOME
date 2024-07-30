@@ -41,44 +41,40 @@ export default function App() {
 
 // https://jsfiddle.net/0z9wgx7u/3/
 
-const url = 'https://restcountries.eu/rest/v2/all';
-axios
-  .get(url)
-  .then((response) => {
-    this.setState({
-      data: response.data,
-    });
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+// Example 1 -------v-- Simple GET request
+import axios from 'axios';
 
-
+var root = 'https://jsonplaceholder.typicode.com/posts'
 
 // Make a GET request
-
-axios.get(root)
+axios
+  .get(root)
   .then((data) => {
-  console.log('data', data)
-})
+    console.log('data', data)
+  })
   .catch((e) => {
-  console.log('error', e)
-}) */
+    console.log('error', e)
+  }) 
 
-/* import axios from 'axios';
+
+// Example 2 -------v-- get function
+
+import axios from 'axios';
 
 const ajaxToGetData = () => {
   axios.get('https://jsonplaceholder.typicode.com/posts').then((response) => {
     console.log('data:', response.data);
   });
 };
+ajaxToGetData(); 
 
 
-ajaxToGetData(); */
+// Example 3 -------v-- async get function
 
 async function getActivity() {
-    let response = await axiosRequest.get('https://www.boredapi.com/api/activity')
-    console.log(`You could ${response.data.activity}`)
+    let response = await axios.get('https://jsonplaceholder.typicode.com/posts')
+    const data = await response.data
+    console.log(response.data)
 }
 
 getActivity();
