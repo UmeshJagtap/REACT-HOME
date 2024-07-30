@@ -39,9 +39,9 @@ function App() {
         Click on the Vite and React logos to learn more
       </p> */}
       <FetchProducts />
-      <FecthDog />
-      {/* <Axios /> */}
-      <UseFetch1 />
+      {/* <FecthDog /> */}
+      <Axios />
+      {/* <UseFetch1 /> */}
     </>
   );
 }

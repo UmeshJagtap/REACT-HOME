@@ -2,3 +2,5 @@ API's :-
 https://fakestoreapi.com/products
 https://dog.ceo/api/breeds/image/random
 https://www.themealdb.com/api/json/v1/1/random.php
+
+If useEffect runs twice, then remove the StrictMode from main.jsx
