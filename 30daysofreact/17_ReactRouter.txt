@@ -1,0 +1,13 @@
+30 Days Of React: React Router
+
+What is React Router ?
+You may have not heard of the word route or router before and it might be necessary to define it here. The literal meaning of route is a path or a way to get to somewhere. 
+The meaning in React is also similar to the literal meaning. React Router is by itself a React component which allows you to navigate between React components.
+
+In this section, you will get started how to use React router but it may not have plenty of information about it. 
+In case you prefer to learn from the official website of React Router you can get here.
+
+As we have cleared out the very beginning that React is a single page application which has only one index.html page in the entire application. 
+When we implement a React Router the different components get render on the index.html page at same time or different time base on different logic and conditions. 
+React Router has different versions and the latest version is React Router 5. We will use React Router version 4 for this challenge. Let's get started by installing the React Router packages.
+
