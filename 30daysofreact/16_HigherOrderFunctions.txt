@@ -65,7 +65,7 @@ function Test() {
 export default Test;
 
 
-// Other Styled Button
+// Other Styled Buttons
 
 import React from 'react';
 
