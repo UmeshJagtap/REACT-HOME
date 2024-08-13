@@ -30,7 +30,10 @@ export default function App() {
     <>
       <p>Fetch And Axios</p>
       <button onClick={fetchData}>Fetch Data</button>
-      {JSON.stringify(data)}
+      {/* {JSON.stringify(data)} */}
+      <pre className="overflow-auto p-4 space-y-2 w-full bg-gray-100 rounded-md">
+        <code>{JSON.stringify(data, null, 2)}</code>
+      </pre>
     </>
   );
 }
