@@ -1,0 +1,114 @@
+// -------------------------------------
+// 1. Use the given hexadecimal color generator in the example to create these random colors. If you don't know how to generate the hexadecimal color you can use dummy data generator
+
+import React from 'react';
+
+function HexBlock(props) {
+  return (
+    <>
+      <div
+        className="p-2 m-1 text-center"
+        style={{ backgroundColor: `${props.color}`, color: 'white' }}
+      >
+        {props.color}
+      </div>
+    </>
+  );
+}
+
+function HexColr(props) {
+  console.log(props.colors);
+  return (
+    <>
+      {/* <p>TEST HexColr</p> */}
+      {props.colors.map((color) => {
+        return <HexBlock color={color} />;
+      })}
+    </>
+  );
+}
+
+// -------------------------------------
+// 2. Use functional component to design the following user card.
+function Skills({ skills }) {
+  console.log(skills);
+  return (
+    <>
+      <div className="bg-blue-100">
+        <p className="font-bold">SKILLS</p>
+        <div className="flex gap-2">
+          {skills.map((skill) => {
+            return (
+              <p className="bg-blue-400 text-white p-1 rounded">{skill}</p>
+            );
+          })}
+        </div>
+        <p>Joined on July 22, 2019.</p>
+      </div>
+    </>
+  );
+}
+
+function User({ user: { image, name, title } }) {
+  // console.log(props);
+  // const { image, name, title } = props.user;
+  return (
+    <div>
+      <img className="w-20" src={image} alt="User Image" />
+      {/* <p>Umesh Jagtap</p> */}
+      <p className="font-bold">{name}</p>
+      {/* <p>Software Developer</p> */}
+      <p>{title}</p>
+    </div>
+  );
+}
+function UserCard() {
+  const userData = {
+    image:
+      'https://th.bing.com/th/id/OIP.LvNp_-MBZql0m_nU_CQwuwHaHa?rs=1&pid=ImgDetMain',
+    name: 'Umesh Jagtap',
+    title: 'Software Develper',
+  };
+  // console.log(userData.image);
+  const userSkills = [
+    'HTML',
+    'CSS',
+    'Sass',
+    'JS',
+    'ReactJS',
+    'Redux',
+    'Zustand',
+    'TypeScript',
+    'GSAP',
+    'Node',
+    'MongoDB',
+    'Python',
+    'MySQL',
+    'GraphQL',
+    'Docker',
+    'Git',
+    'Bitbucket',
+    'Next',
+  ];
+  return (
+    <>
+      <div className="border-solid border-4 border-indigo-200">
+        <User user={userData} />
+        <Skills skills={userSkills} />
+      </div>
+    </>
+  );
+}
+
+export default function App() {
+  const hexColr = ['#123456', '#966ce0', '#b3ceff', '#cd5de0', '#c7436a'];
+  return (
+    <>
+      <div className="text-center text-xl font-md">HexColr</div>
+      <HexColr colors={hexColr} />
+      <br />
+      <div className="text-center text-xl font-md">User Card</div>
+      <UserCard />
+    </>
+  );
+}
