@@ -10,6 +10,8 @@ import FecthDog from './FetchDog';
 import UseFetch1 from './UseFetch1';
 import Axios from './axiosFetch';
 
+import Zustand from './Zustand';
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -42,6 +44,7 @@ function App() {
       {/* <FecthDog /> */}
       <Axios />
       {/* <UseFetch1 /> */}
+      <Zustand />
     </>
   );
 }
