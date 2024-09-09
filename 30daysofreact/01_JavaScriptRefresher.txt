@@ -1,0 +1,350 @@
+//
+// 30 Days Of React: JavaScript Refresher
+//
+
+// JavaScript Refresher ------
+// 0. Adding JavaScript to a Web Page
+// JavaScript can be added to a web page in three different ways:
+
+// Inline script
+// Internal script
+// External script
+// Multiple External scripts
+// The following sections show different ways of adding JavaScript code to your web page.
+
+// Inline Script ------
+// Create a project folder on your desktop or in any location, name it 30DaysOfJS and create an index.html file in the project folder. Then paste the following code and open it in a browser, for example Chrome.
+
+// <!DOCTYPE html>
+// <html>
+//   <head>
+//     <title>30DaysOfScript:Inline Script</title>
+//   </head>
+//   <body>
+//     <button onclick="alert('Welcome to 30DaysOfJavaScript!')">Click Me</button>
+//   </body>
+// </html>
+
+// Now, you just wrote your first inline script. We can create a pop up alert message using the alert() built-in function.
+
+// Internal Script ------
+// The internal script can be written in the head or the body, but it is preferred to put it on the body of the HTML document. First, let us write on the head part of the page.
+
+// <!DOCTYPE html>
+// <html>
+//   <head>
+//     <title>30DaysOfScript:Internal Script</title>
+//     <script>
+//       console.log('Welcome to 30DaysOfJavaScript')
+//     </script>
+//   </head>
+//   <body></body>
+// </html>
+
+// This is how we write an internal script most of the time. Writing the JavaScript code in the body section is the most preferred option. Open the browser console to see the output from the console.log()
+
+// <!DOCTYPE html>
+// <html>
+//   <head>
+//     <title>30DaysOfScript:Internal Script</title>
+//   </head>
+//   <body>
+//     <button onclick="alert('Welcome to 30DaysOfJavaScript!');">Click Me</button>
+//     <script>
+//       console.log('Welcome to 30DaysOfJavaScript')
+//     </script>
+//   </body>
+// </html>
+
+// Open the browser console to see the output from the console.log()
+
+// External Script ------
+// Similar to the internal script, the external script link can be on the header or body, but it is preferred to put it in the body. First, we should create an external JavaScript file with .js extension. All files ending with .js extension. All files ending with .js extension are JavaScript files. Create a file named introduction.js inside your project directory and write the following code and link this .js file at the bottom of the body.
+
+// console.log('Welcome to 30DaysOfJavaScript')
+
+// External scripts in the head:
+
+// <!DOCTYPE html>
+// <html>
+//   <head>
+//     <title>30DaysOfJavaScript:External script</title>
+//     <script src="introduction.js"></script>
+//   </head>
+//   <body></body>
+// </html>
+
+// External scripts in the body:
+
+// <!DOCTYPE html>
+// <html>
+//   <head>
+//     <title>30DaysOfJavaScript:External script</title>
+//   </head>
+//   <body>
+//     //it could be in the header or in the body // Here is the recommended place
+//     to put the external script
+//     <script src="introduction.js"></script>
+//   </body>
+// </html>
+
+// Open the browser console to see the output of the console.log()
+
+// Multiple External Scripts
+// We can also link multiple external JavaScript files to a web page. Create a helloworld.js file inside the 30DaysOfJS folder and write the following code.
+
+// console.log('Hello, World!')
+
+// <!DOCTYPE html>
+// <html>
+//   <head>
+//     <title>Multiple External Scripts</title>
+//   </head>
+//   <body>
+//     <script src="./helloworld.js"></script>
+//     <script src="./introduction.js"></script>
+//   </body>
+// </html>
+
+// Your main.js file should be below all other scripts. It is very important to remember this.
+
+// 1. Variables ------
+// We use var, let and const to declare a variable. The var is functions scope, however let and const are block scope. In this challenge we use ES6 and above features of JavaScript. Avoid using var.
+
+// let firstName = 'Asabeneh';
+// firstName = 'Eyob';
+
+// const PI = 3.14; // Not allowed to reassign PI to a new value
+// // PI = 3.
+
+// 2. Data types ------
+// If you do not feel comfortable with data types check the following link
+
+// 3. Arrays ------
+// In contrast to variables, an array can store multiple values. Each value in an array has an index, and each index has a reference in a memory address. Each value can be accessed by using their indexes. The index of an array starts from zero, and the index of the last element is less by one from the length of the array.
+
+// An array is a collection of different data types which are ordered and changeable(modifiable). An array allows storing duplicate elements and different data types. An array can be empty, or it may have different data type values.
+
+// How to create an empty array
+// In JavaScript, we can create an array in different ways. Let us see different ways to create an array. It is very common to use const instead of let to declare an array variable. If you are using const it means you do not use that variable name again.
+
+// Using Array constructor
+// // syntax
+// const arr = Array()
+// // or
+// // let arr = new Array()
+// console.log(arr) // []
+
+// Using square brackets([])
+// // syntax
+// // This the most recommended way to create an empty list
+// const arr = []
+// console.log(arr)
+
+// How to create an array with values
+// Array with initial values. We use length property to find the length of an array.
+
+// const numbers = [0, 3.14, 9.81, 37, 98.6, 100] // array of numbers
+// const fruits = ['banana', 'orange', 'mango', 'lemon'] // array of strings, fruits
+// const vegetables = ['Tomato', 'Potato', 'Cabbage', 'Onion', 'Carrot'] // array of strings, vegetables
+// const animalProducts = ['milk', 'meat', 'butter', 'yoghurt'] // array of strings, products
+// const webTechs = ['HTML', 'CSS', 'JS', 'React', 'Redux', 'Node', 'MongDB'] // array of web technologies
+// const countries = ['Finland', 'Denmark', 'Sweden', 'Norway', 'Iceland'] // array of strings, countries
+
+// // Print the array and its length
+
+// console.log('Numbers:', numbers)
+// console.log('Number of numbers:', numbers.length)
+
+// console.log('Fruits:', fruits)
+// console.log('Number of fruits:', fruits.length)
+
+// console.log('Vegetables:', vegetables)
+// console.log('Number of vegetables:', vegetables.length)
+
+// console.log('Animal products:', animalProducts)
+// console.log('Number of animal products:', animalProducts.length)
+
+// console.log('Web technologies:', webTechs)
+// console.log('Number of web technologies:', webTechs.length)
+
+// console.log('Countries:', countries)
+// console.log('Number of countries:', countries.length)
+
+// Output :-
+// Numbers: [0, 3.14, 9.81, 37, 98.6, 100]
+// Number of numbers: 6
+// Fruits: ['banana', 'orange', 'mango', 'lemon']
+// Number of fruits: 4
+// Vegetables: ['Tomato', 'Potato', 'Cabbage', 'Onion', 'Carrot']
+// Number of vegetables: 5
+// Animal products: ['milk', 'meat', 'butter', 'yoghurt']
+// Number of animal products: 4
+// Web technologies: ['HTML', 'CSS', 'JS', 'React', 'Redux', 'Node', 'MongDB']
+// Number of web technologies: 7
+// Countries: ['Finland', 'Estonia', 'Denmark', 'Sweden', 'Norway']
+// Number of countries: 5
+
+// Array can have items of different data types
+
+// const arr = [
+//   'Asabeneh',
+//   250,
+//   true,
+//   { country: 'Finland', city: 'Helsinki' },
+//   { skills: ['HTML', 'CSS', 'JS', 'React', 'Python'] },
+// ] // arr containing different data types
+// console.log(arr)
+
+// Creating an array using split
+// As we have seen in the earlier section, we can split a string at different positions, and we can change to an array. Let us see the examples below.
+
+// let js = 'JavaScript'
+// const charsInJavaScript = js.split('')
+
+// console.log(charsInJavaScript) // ["J", "a", "v", "a", "S", "c", "r", "i", "p", "t"]
+
+// let companiesString = 'Facebook, Google, Microsoft, Apple, IBM, Oracle, Amazon'
+// const companies = companiesString.split(',')
+
+// console.log(companies) // ["Facebook", " Google", " Microsoft", " Apple", " IBM", " Oracle", " Amazon"]
+// let txt =
+//   'I love teaching and empowering people. I teach HTML, CSS, JS, React, Python.'
+// const words = txt.split(' ')
+
+// console.log(words)
+// // the text has special characters think how you can just get only the words
+// // ["I", "love", "teaching", "and", "empowering", "people.", "I", "teach", "HTML,", "CSS,", "JS,", "React,", "Python"]
+
+// Accessing array items using index
+// We access each element in an array using their index. An array index starts from 0. The picture below clearly shows the index of each element in the array.
+
+// const fruits = ['banana', 'orange', 'mango', 'lemon'];
+// let firstFruit = fruits[0]; // we are accessing the first item using its index
+
+// console.log(firstFruit); // banana
+
+// secondFruit = fruits[1];
+// console.log(secondFruit); // orange
+
+// let lastFruit = fruits[3];
+// console.log(lastFruit); // lemon
+// // Last index can be calculated as follows
+
+// let lastIndex = fruits.length - 1;
+// lastFruit = fruits[lastIndex];
+
+// console.log(lastFruit); // lemon
+
+// ----------------------------------
+
+// const numbers = [0, 3.14, 9.81, 37, 98.6, 100]; // set of numbers
+
+// console.log(numbers.length); // => to know the size of the array, which is 6
+// console.log(numbers); // -> [0, 3.14, 9.81, 37, 98.6, 100]
+// console.log(numbers[0]); //  -> 0
+// console.log(numbers[5]); //  -> 100
+
+// let lastIndex = numbers.length - 1;
+// console.log(numbers[lastIndex]); // -> 100
+
+// ----------------------------------
+
+// const webTechs = [
+//   'HTML',
+//   'CSS',
+//   'JavaScript',
+//   'React',
+//   'Redux',
+//   'Node',
+//   'MongoDB',
+// ]; // List of web technologies
+
+// console.log(webTechs); // all the array items
+// console.log(webTechs.length); // => to know the size of the array, which is 7
+// console.log(webTechs[0]); //  -> HTML
+// console.log(webTechs[6]); //  -> MongoDB
+
+// let lastIndex = webTechs.length - 1;
+// console.log(webTechs[lastIndex]); // -> MongoDB
+
+// ----------------------------------
+
+// const countries = [
+//   'Albania',
+//   'Bolivia',
+//   'Canada',
+//   'Denmark',
+//   'Ethiopia',
+//   'Finland',
+//   'Germany',
+//   'Hungary',
+//   'Ireland',
+//   'Japan',
+//   'Kenya',
+// ]; // List of countries
+
+// console.log(countries); // -> all countries in array
+// console.log(countries[0]); //  -> Albania
+// console.log(countries[10]); //  -> Kenya
+
+// let lastIndex = countries.length - 1;
+// console.log(countries[lastIndex]); //  -> Kenya
+
+// ----------------------------------
+
+// const shoppingCart = [
+//   'Milk',
+//   'Mango',
+//   'Tomato',
+//   'Potato',
+//   'Avocado',
+//   'Meat',
+//   'Eggs',
+//   'Sugar',
+// ]; // List of food products
+
+// console.log(shoppingCart); // -> all shoppingCart in array
+// console.log(shoppingCart[0]); //  -> Milk
+// console.log(shoppingCart[7]); //  -> Sugar
+
+// let lastIndex = shoppingCart.length - 1;
+// console.log(shoppingCart[lastIndex]); //  -> Sugar
+
+// Modifying array element
+// An array is mutable(modifiable). Once an array is created, we can modify the contents of the array elements.
+
+// const numbers = [1, 2, 3, 4, 5]
+// numbers[0] = 10 // changing 1 at index 0 to 10
+// numbers[1] = 20 // changing  2 at index 1 to 20
+
+// console.log(numbers) // [10, 20, 3, 4, 5]
+
+// const countries = [
+//   'Albania',
+//   'Bolivia',
+//   'Canada',
+//   'Denmark',
+//   'Ethiopia',
+//   'Finland',
+//   'Germany',
+//   'Hungary',
+//   'Ireland',
+//   'Japan',
+//   'Kenya',
+// ]
+
+// countries[0] = 'Afghanistan' // Replacing Albania by Afghanistan
+// let lastIndex = countries.length - 1
+// countries[lastIndex] = 'Korea' // Replacing Kenya by Korea
+
+// console.log(countries)
+
+// Output :-
+// ["Afghanistan", "Bolivia", "Canada", "Denmark", "Ethiopia", "Finland", "Germany", "Hungary", "Ireland", "Japan", "Korea"]
+
+// Methods to manipulate array
+// There are different methods to manipulate an array. These are some of the available methods to deal with arrays:Array, length, concat, indexOf, slice, splice, join, toString, includes, lastIndexOf, isArray, fill, push, pop, shift, unshift
+
+// Array Constructor
+// Array:To create an array.
