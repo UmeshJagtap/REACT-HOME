@@ -1,0 +1,308 @@
+// Debounce and Throttling
+
+// Debounce
+// So, debounce waits for a certain period of inactivity before triggering an action.
+// Example :-
+// 𝐈𝐦𝐚𝐠𝐢𝐧𝐞 𝐲𝐨𝐮'𝐫𝐞 𝐚𝐭 𝐚 𝐜𝐫𝐨𝐰𝐝𝐞𝐝 𝐜𝐨𝐧𝐜𝐞𝐫𝐭, 𝐚𝐧𝐝 𝐞𝐯𝐞𝐫𝐲 𝐭𝐢𝐦𝐞 𝐲𝐨𝐮 𝐜𝐥𝐚𝐩, 𝐭𝐡𝐞 𝐥𝐢𝐠𝐡𝐭𝐬 𝐟𝐥𝐢𝐜𝐤𝐞𝐫. 𝐃𝐞𝐛𝐨𝐮𝐧𝐜𝐞 𝐢𝐬 𝐥𝐢𝐤𝐞 𝐰𝐚𝐢𝐭𝐢𝐧𝐠 𝐟𝐨𝐫 𝐚 𝐩𝐚𝐮𝐬𝐞 𝐢𝐧 𝐭𝐡𝐞 𝐜𝐥𝐚𝐩𝐩𝐢𝐧𝐠 𝐛𝐞𝐟𝐨𝐫𝐞 𝐜𝐡𝐚𝐧𝐠𝐢𝐧𝐠 𝐭𝐡𝐞 𝐥𝐢𝐠𝐡𝐭𝐬, 𝐬𝐨 𝐭𝐡𝐞 𝐥𝐢𝐠𝐡𝐭𝐬 𝐨𝐧𝐥𝐲 𝐫𝐞𝐬𝐩𝐨𝐧𝐝 𝐭𝐨 𝐭𝐡𝐞 𝐟𝐢𝐧𝐚𝐥 𝐜𝐥𝐚𝐩 𝐚𝐟𝐭𝐞𝐫 𝐭𝐡𝐞 𝐜𝐫𝐨𝐰𝐝 𝐬𝐞𝐭𝐭𝐥𝐞𝐬.
+
+// Throttling
+// Example :-
+// Throttling is like having a bouncer at the concert who only lets you in every few minutes, no matter how many times you try to enter. It limits the number of actions over time, making sure things don't get too chaotic.
+
+// -------------------------------------------------------------------------------- ( Linkdln )
+// https://github.com/bhoomika14/ab-testing
+//
+// Get Your Data Through API JavaScript
+//
+
+// fetch()
+// fetch() is a built-in JavaScript function that allows you to make HTTTP requests to fetch resources (including data) from a network.
+// It uses promises, which makes it easier to handle asynchronous operations.
+fetch('https://api.example.com/data')
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => console.error('Error', error));
+
+// axios()
+// Axios is a popular HTTP client library for making requests frok browsers or Node.js applications.
+// It is simpler to the built-in fetch() API, with additional features such as request @ response interceptors, automatic JSON parsing, and more.
+
+const axios = require('axios');
+axios
+  .get('https://api.example.com/data')
+  .then((response) => console.log(response.data))
+  .catch((error) => console.error('Error', error));
+
+// ajax()
+// If you're working with jQuery, you can use the $.ajax()
+// function to make HTTP requests.
+
+// It provides a simple interface for making AJAX requests
+// and handling responses.
+
+$.ajax({
+  url: 'https://api.example.com/data',
+  method: 'GET',
+  success: function (data) {
+    console.log(data);
+  },
+  error: function (xhr, status, error) {
+    console.error('Error', error);
+  },
+});
+
+// XMLHttpRequest()
+// It's a built in JavaScript object that provides an easy way to fetch data from a URL without a page refresh.
+
+// It's a bit lower-level compared to fetch() or libraries like Axios, but it's still widely used in many applications.
+
+const xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://api.example.com/data', true);
+xhr.onreadystatechange = () => {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    console.log(xhr.responseText);
+  } else {
+    console.error('Error:', xhr.statusText);
+  }
+};
+
+xhr.send();
+
+//
+// JavaScript Fetch API
+//
+
+// Handling Responses :- Fetch returns a Promise that resolves to the Response of a request, whether it is successful not.
+
+// fetch('https://api.example.com/data')
+//    .then((response) => console.log(response));
+// ----------
+
+// Checking Successful Fetch :- Often, you will want to check if the request was successful. Here's how to do it :
+
+// fetch('https://api.example.com/data')
+//    .then((response) => {
+//       if (!response.ok) {
+// 	throw new Error('Network response was not ok');
+//       }
+//       return response.json();
+// });
+// ----------
+
+// Handling JSON Data :- To extract the JSON body content from the response, we use the json() method:
+
+// fetch('https://api.example.com/data')
+//    .then((response) => response.json())
+//    .then((data) => console.log(data));
+// ----------
+
+// Error Handling :- If a network error occurs, the catch() is triggred.
+
+// fetch('https://api.example.com/data')
+//    .then((response) => response.json())
+//    .then((data) => console.log(data))
+//    .catch((error) =>
+//       console.error('There has been a problem with your fetch operation:', error),
+//    );
+// ----------
+
+// Fetch POST Request :- Fetch is not just for GET requests. You can use it to send other types of requests, like POST.
+
+// fetch('https://api.example.com/data', {
+//    method: 'POST',
+//    headers: { 'Content-Type': 'application/json' },
+//    body: JSON.stringify({ id: '200' }),
+// });
+// ----------
+
+//
+// React Performance Optimization
+//
+// 1. Minimizing Re-renders with React.memo()
+// 2. Lazy Loading
+// 3. React Virtualized
+// 4. Memoize Costly Computations with useMemo
+// 5. Code Splitting
+// 6. Debouncing
+// 7. CDN
+// 8. Server-Side Rendering (SSR)
+
+//
+// 1. Minimizing Re-renders with
+// React.memo()
+//
+
+// React.memo() is a higher-order component that memoizes the result of a component's rendering.
+// It skips the unnecessary re-renders if the components's prop remain the same.
+
+import React from 'react';
+
+const MyComponent = React.memo((props) => {
+  // Component logic here
+  console.log('Rendering MyComponent');
+
+  return <div>{/* {Render component content using props} */}</div>;
+});
+
+export default MyComponent;
+
+// MyComponent will only r-render if its props change.
+// This can help optimize performance of our application.
+
+//
+// 2. Lazy Loading
+//
+// Large bundle sizes can increase the initial loading time of your application.
+// With React.lazy, you can lazily load components to improve initial load times, which means the components are loaded only when they are needed.
+
+import React, { Suspense } from 'react';
+
+const LazyComponent = React.lazy(() => import('./LazyComponent'));
+
+function App() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LazyComponent />
+    </Suspense>
+  );
+}
+
+// The Suspense component allows you to provide a fallback UI while the component is being loaded.
+
+//
+// 3. React Virtualized
+//
+// React Virtaulized is a library for effectively rendering large lists.
+// It uses a windowing technique to render only the items that are currently visible on the screen.
+
+import React from 'react';
+import { List } from 'react-virtualized';
+
+function VirtualizedList({ items }) {
+  return (
+    <List
+      width={300}
+      height={400}
+      rowCount={items.length}
+      rowHeight={50}
+      rowRenderer={({ index, key, style }) => (
+        <div key={key} style={style}>
+          {items[index]}
+        </div>
+      )}
+    />
+  );
+}
+
+// This reduces the memory usage and improves performance.
+
+//
+// 4. Memoize Costly Computations with
+// useMemo
+//
+// The useMemo hook lets you cache the result of a calculation between re-renders.
+// It's used to optimize performance by avoidnig unnecessary re-computation of expensive operations.
+
+import React, { useMemo, useState } from 'react';
+
+function ExpensiveComponent({ a, b }) {
+  const result = useMemo(() => {
+    // Expensive computation
+    return a * b;
+  }, [a, b]);
+
+  return <div>Result: {result}</div>;
+}
+
+// This example demonstrates how to optimize performance by avoiding unnecessary re-computation.
+
+//
+// 5. Code Splitting
+//
+
+// Code splitting is a technique that allows you to split your React application into smaller chunks, which are loaded on-demand.
+// It helps reduce the initial bundle size and imporves the loading performance of your application.
+
+import React, { Suspense } from 'react';
+
+const LazyComponent = React.lazy(() => import('./LazyComponent'));
+
+function App() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LazyComponent />
+    </Suspense>
+  );
+}
+
+// With React.lazy(), you can dynamically import components, and Suspense provides a fallback UI while the component is being loaded.
+
+//
+// 6. Debouncing
+//
+
+// Debouncing is a technique used to delay the execution of a function until after a certain amount of time has passed since the last invocation.
+
+// It is commanly used for handling expensive operations triggered by user events, such as input changes or search requests.
+
+// Let's take an example of a search input field. When a user types in the search box, an event is triggered for everystroke.
+
+// Without debouncing, this can lead to excessive API calls or unnecessary processing.
+
+// By debouncing the event handler, we can ensure that the search function is called only after the user has finshed typing or pused for a specified duration.
+
+// Debouncing Example
+// We only wanna make the API calls to the server when the user finishes typing their word and not on every input change.
+
+// Define a debounce function
+function debounce(func, delay) {
+  let timeoutId;
+
+  return function () {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(func, delay);
+  };
+}
+
+// Get the search input element by its id
+const searchInput = document.getElementById('search-input');
+
+// Define a function to handle the search operation
+function handleSearch() {
+  // Perform search operation
+  console.log('Searching...');
+}
+
+// Apply debounce to the handleSearch function with delay of 300 milliseconds
+const debouncedSearch = debounce(handleSearch, 300);
+
+// Add an event listner to the search input feild for the input event
+searchInput.addEventListener('input', debouncedSearch);
+
+//
+// 7. Content Delivery Network ( CDN )
+//
+
+// A CDN is a distributed network of servers located in different geographical locations.
+
+// It serves as an intermediary between your web application and its users, helping to optimize content delivery and improve performance.
+
+// Reduced latency : With CDN, content is served from servers located closer to the user's geographical location.
+
+// Improved scalability : CDNs are designed to handle high traffic volumes and distribute content across multiple servers.
+
+// Bandwidth offloading : By offloading the delivery of static assets, such as images, CSS files, and JavaScript files, to a CDN, you can reduce the bandwidth usage on your web servers. This frees up server resources.
+
+//
+// 8. Server-Side Rendering (SSR)
+//
+
+// SSR is a technique where the initial rendering of a React application is performed on the server, and the resulting HTML is sent to the client.
+
+// It can improve te performance of your application by sending a pre-rendered HTML page to the client, which can be displayed quickly while the JavaScript bundle is being loaded and executed.
+
+// Improved Performance : SSR can reduce the time-to-content for users, as they receive a fully-rendered page from the server
+
+// SEO Optimization : Search engines can crawl and index the content of SSR pages more easily, as they receive the complete HTML contetnt upfront.
+
+// Additionally, SSR may not be suitable for all types of applications or use cases, particularly those that require highly dynamic or interactive interfaces.
