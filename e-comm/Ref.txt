@@ -11,8 +11,7 @@ GitRepo >> https://github.com/rinkuv37/Ecommerce-Website-React/blob/main/src/com
 MIUI >> https://mui.com/material-ui/getting-started/installation/    https://mui.com/material-ui/material-icons/?query=search
 
 LOGO >> https://www.vecteezy.com/vector-art/6515841-fruit-and-vegetable-logo-design
-
-LOGO >> https://www.shutterstock.com/search/vegetables-logo
+     >> https://www.shutterstock.com/search/vegetables-logo
 
 FONT >> https://fonts.google.com/selection/embed
 
