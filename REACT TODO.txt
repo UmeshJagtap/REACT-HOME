@@ -1,0 +1,18 @@
+
+Machine Coding Interview (Amazon, Ola) - Autocomplete Search Bar using React
+https://www.youtube.com/watch?v=fL0gfeDHKP0&t=2518s
+
+Machine Coding Interview (Swiggy, Flipkart) - Pagination using React
+https://www.youtube.com/watch?v=J-QIayOSDN8
+
+Machine Coding Interview - File Explorer using React
+https://www.youtube.com/watch?v=WQcZi1-S8tg
+
+how to integrate phonepe payment gateway in react js
+https://www.youtube.com/watch?v=Q6XSMTQQp_4
+
+
+------------------------------------------------------ Debugging 
+
+How To Debug React Apps Like A Senior Developer
+https://www.youtube.com/watch?v=l8knG0BPr-o
