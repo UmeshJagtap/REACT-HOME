@@ -57,6 +57,18 @@
   border: 2px solid grey;
 }
 
+.box-container {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 10px;
+  justify-items: center;
+  align-items: center;
+  margin: 0 500px;
+  border: 2px solid #282c34;
+  border-radius: 4px;
+}
+
 .box {
   height: 100px;
   width: 100px;
@@ -64,4 +76,11 @@
   display: inline-block;
   margin-right: 2px;
   border-radius: 5px;
+  cursor: pointer;
+  /* caret-color: transparent; */
+}
+
+.box:hover {
+  transform: scale(1.1);
+  border: 2px solid rgb(98, 98, 212);
 }

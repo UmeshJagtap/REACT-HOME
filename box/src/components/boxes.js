@@ -47,5 +47,21 @@ const Boxex = [
     id: 12,
     on: false,
   },
+  {
+    id: 13,
+    on: true,
+  },
+  {
+    id: 14,
+    on: false,
+  },
+  {
+    id: 15,
+    on: true,
+  },
+  {
+    id: 16,
+    on: false,
+  },
 ];
 export default Boxex;

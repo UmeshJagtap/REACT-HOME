@@ -39,7 +39,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
       <p>Boxes will go here</p>
-      <main>{squareElements}</main>
+      <main className="box-container">{squareElements}</main>
     </div>
   );
 }
