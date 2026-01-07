@@ -1,0 +1,27 @@
+
+
+----- REACT-HOME-INDEX -----
+
+
+30daysofreact       --React concepts in 30 days
+airbnb              --small airbnb site
+autosearch          --Autocomplete Search Bar ( Machine Coding Interview )
+agendamakerapp      --
+box                 --random boxes with shuffle
+e-comm              --EComm Navbar
+jokes               --Random Joke generator
+mailme              --poc feedback app
+markdown-notes-app  --
+movieland           --movie suggestions with search 
+my-project          --API ( products, dogs, meals )
+my-react-router-app -- react router poc 
+my-forms            --forms app in react (SignUp)
+mytravelournal      --
+
+TechInMinss         --React 5 mins recap (js, react, node)
+
+tenzies-vite        --
+
+ZA-notes
+
+Rest of them are reference files...
