@@ -11,12 +11,12 @@ box                 --random boxes with shuffle
 e-comm              --EComm Navbar
 jokes               --Random Joke generator
 mailme              --poc feedback app
-markdown-notes-app  --
+markdown-notes-app  --File.md editor app
 movieland           --movie suggestions with search 
 my-project          --API ( products, dogs, meals )
 my-react-router-app -- react router poc 
 my-forms            --forms app in react (SignUp)
-mytravelournal      --
+mytraveljournal      --travel logs
 
 TechInMinss         --React 5 mins recap (js, react, node)
 
