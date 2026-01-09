@@ -25,3 +25,12 @@ tenzies-vite        --
 ZA-notes
 
 Rest of them are reference files...
+
+Apps yet to migrate >> C:\Users\ZUK\Desktop\REACT HOME
+learn-state
+markdownNotesAppWithFirebase
+memegenerator
+parallax-banners
+react-funfacts
+react-redux-store
+TCaSgendaMakers
